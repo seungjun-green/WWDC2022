@@ -27,10 +27,6 @@ struct RobotSayView: View {
     var body: some View {
         VStack{
             HStack{
-                Text("Robot:").font(Font.title).fontWeight(.bold)
-                Spacer()
-            }
-            HStack{
                 
                 Text(shownText) + cursorView
                 
