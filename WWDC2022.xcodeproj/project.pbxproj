@@ -11,6 +11,14 @@
 		C0DFF894280DAA9700C75B7C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DFF893280DAA9700C75B7C /* ContentView.swift */; };
 		C0DFF896280DAA9900C75B7C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C0DFF895280DAA9900C75B7C /* Assets.xcassets */; };
 		C0DFF899280DAA9900C75B7C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C0DFF898280DAA9900C75B7C /* Preview Assets.xcassets */; };
+		C0DFF8A2280DAADB00C75B7C /* RobotFaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DFF8A1280DAADB00C75B7C /* RobotFaceView.swift */; };
+		C0DFF8A4280DAAF100C75B7C /* RobotSayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DFF8A3280DAAF100C75B7C /* RobotSayView.swift */; };
+		C0DFF8A6280DAB0600C75B7C /* SpeechView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DFF8A5280DAB0600C75B7C /* SpeechView.swift */; };
+		C0DFF8A8280DAB1D00C75B7C /* KeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DFF8A7280DAB1D00C75B7C /* KeyboardView.swift */; };
+		C0DFF8AC280DAB3800C75B7C /* EmotionClassifier.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = C0DFF8A9280DAB3800C75B7C /* EmotionClassifier.mlmodel */; };
+		C0DFF8AD280DAB3800C75B7C /* EmotionClassifierPro.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = C0DFF8AA280DAB3800C75B7C /* EmotionClassifierPro.mlmodel */; };
+		C0DFF8AE280DAB3800C75B7C /* TagClassifier1.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = C0DFF8AB280DAB3800C75B7C /* TagClassifier1.mlmodel */; };
+		C0DFF8B0280DAB7800C75B7C /* MasterData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DFF8AF280DAB7800C75B7C /* MasterData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +27,14 @@
 		C0DFF893280DAA9700C75B7C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		C0DFF895280DAA9900C75B7C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C0DFF898280DAA9900C75B7C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		C0DFF8A1280DAADB00C75B7C /* RobotFaceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RobotFaceView.swift; sourceTree = "<group>"; };
+		C0DFF8A3280DAAF100C75B7C /* RobotSayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RobotSayView.swift; sourceTree = "<group>"; };
+		C0DFF8A5280DAB0600C75B7C /* SpeechView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechView.swift; sourceTree = "<group>"; };
+		C0DFF8A7280DAB1D00C75B7C /* KeyboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardView.swift; sourceTree = "<group>"; };
+		C0DFF8A9280DAB3800C75B7C /* EmotionClassifier.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = EmotionClassifier.mlmodel; sourceTree = "<group>"; };
+		C0DFF8AA280DAB3800C75B7C /* EmotionClassifierPro.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = EmotionClassifierPro.mlmodel; sourceTree = "<group>"; };
+		C0DFF8AB280DAB3800C75B7C /* TagClassifier1.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = TagClassifier1.mlmodel; sourceTree = "<group>"; };
+		C0DFF8AF280DAB7800C75B7C /* MasterData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,8 +67,9 @@
 		C0DFF890280DAA9700C75B7C /* WWDC2022 */ = {
 			isa = PBXGroup;
 			children = (
-				C0DFF891280DAA9700C75B7C /* WWDC2022App.swift */,
-				C0DFF893280DAA9700C75B7C /* ContentView.swift */,
+				C0DFF8B1280DAB9400C75B7C /* Data */,
+				C0DFF8A0280DAAB400C75B7C /* ml models */,
+				C0DFF89F280DAAAB00C75B7C /* View */,
 				C0DFF895280DAA9900C75B7C /* Assets.xcassets */,
 				C0DFF897280DAA9900C75B7C /* Preview Content */,
 			);
@@ -65,6 +82,37 @@
 				C0DFF898280DAA9900C75B7C /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		C0DFF89F280DAAAB00C75B7C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C0DFF891280DAA9700C75B7C /* WWDC2022App.swift */,
+				C0DFF893280DAA9700C75B7C /* ContentView.swift */,
+				C0DFF8A1280DAADB00C75B7C /* RobotFaceView.swift */,
+				C0DFF8A3280DAAF100C75B7C /* RobotSayView.swift */,
+				C0DFF8A5280DAB0600C75B7C /* SpeechView.swift */,
+				C0DFF8A7280DAB1D00C75B7C /* KeyboardView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		C0DFF8A0280DAAB400C75B7C /* ml models */ = {
+			isa = PBXGroup;
+			children = (
+				C0DFF8A9280DAB3800C75B7C /* EmotionClassifier.mlmodel */,
+				C0DFF8AA280DAB3800C75B7C /* EmotionClassifierPro.mlmodel */,
+				C0DFF8AB280DAB3800C75B7C /* TagClassifier1.mlmodel */,
+			);
+			path = "ml models";
+			sourceTree = "<group>";
+		};
+		C0DFF8B1280DAB9400C75B7C /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				C0DFF8AF280DAB7800C75B7C /* MasterData.swift */,
+			);
+			path = Data;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,8 +185,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C0DFF8A2280DAADB00C75B7C /* RobotFaceView.swift in Sources */,
+				C0DFF8B0280DAB7800C75B7C /* MasterData.swift in Sources */,
+				C0DFF8AE280DAB3800C75B7C /* TagClassifier1.mlmodel in Sources */,
 				C0DFF894280DAA9700C75B7C /* ContentView.swift in Sources */,
 				C0DFF892280DAA9700C75B7C /* WWDC2022App.swift in Sources */,
+				C0DFF8A8280DAB1D00C75B7C /* KeyboardView.swift in Sources */,
+				C0DFF8A6280DAB0600C75B7C /* SpeechView.swift in Sources */,
+				C0DFF8AD280DAB3800C75B7C /* EmotionClassifierPro.mlmodel in Sources */,
+				C0DFF8A4280DAAF100C75B7C /* RobotSayView.swift in Sources */,
+				C0DFF8AC280DAB3800C75B7C /* EmotionClassifier.mlmodel in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
