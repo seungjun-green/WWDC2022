@@ -42,7 +42,6 @@ struct RobotSayView: View {
                             curr=0
                         }
                     }
-                    
                 }.onReceive(timer2) { _ in
                     showCursor.toggle()
                 }.font(Font.title)

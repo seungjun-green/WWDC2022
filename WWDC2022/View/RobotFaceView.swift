@@ -12,12 +12,15 @@ import SwiftUI
 struct RobotFacesView: View {
     var emotion: String
     
+    
+    
     var robotEmotion: String {
-        if emotion.isEmpty || emotion == "neatural" {
-            return "netural"
-        } else {
-            return emotion
-        }
+//        if emotion.isEmpty || emotion == "neatural" {
+//            return "netural"
+//        } else {
+//            return emotion
+//        }
+        "fear"
     }
     
     var body: some View {

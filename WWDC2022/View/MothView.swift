@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-
+// DONE
 struct HappyMouth: Shape {
     func path(in rect: CGRect) -> Path {
         Path { path in
@@ -16,6 +16,8 @@ struct HappyMouth: Shape {
         }
     }
 }
+
+
 
 struct LoveMouth: Shape {
     func path(in rect: CGRect) -> Path {
@@ -53,6 +55,7 @@ struct SadMouth: Shape {
     }
 }
 
+
 struct AngryMouth: Shape {
     func path(in rect: CGRect) -> Path {
         Path { path in
@@ -65,8 +68,21 @@ struct AngryMouth: Shape {
 struct FearMouth: Shape {
     func path(in rect: CGRect) -> Path {
         Path { path in
-            path.move(to: CGPoint(x:0, y:rect.size.height))
-            path.addLine(to: CGPoint(x: rect.size.width, y: rect.size.height - 20))
+            path.move(to: CGPoint(x:0, y:rect.size.height-10))
+            path.addLine(to: CGPoint(x: rect.size.width, y:rect.size.height-10))
+            path.addLine(to: CGPoint(x: rect.size.width, y:rect.size.height+30))
+            path.addLine(to: CGPoint(x:0, y:rect.size.height+30))
+            path.addLine(to: CGPoint(x:0, y:rect.size.height-10))
+            path.move(to: CGPoint(x:0, y:rect.size.height+10))
+            path.addLine(to: CGPoint(x: rect.size.width, y:rect.size.height+10))
+            path.move(to: CGPoint(x: rect.size.width/5, y: rect.size.height+30))
+            path.addLine(to: CGPoint(x: rect.size.width/5, y:rect.size.height-10))
+            path.move(to: CGPoint(x: rect.size.width*2/5, y: rect.size.height+30))
+            path.addLine(to: CGPoint(x: rect.size.width*2/5, y:rect.size.height-10))
+            path.move(to: CGPoint(x: rect.size.width*3/5, y: rect.size.height+30))
+            path.addLine(to: CGPoint(x: rect.size.width*3/5, y:rect.size.height-10))
+            path.move(to: CGPoint(x: rect.size.width*4/5, y: rect.size.height+30))
+            path.addLine(to: CGPoint(x: rect.size.width*4/5, y:rect.size.height-10))
         }
     }
 }
