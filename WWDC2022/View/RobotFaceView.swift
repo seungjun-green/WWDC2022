@@ -20,7 +20,7 @@ struct RobotFacesView: View {
 //        } else {
 //            return emotion
 //        }
-        "fear"
+        "surprise"
     }
     
     var body: some View {
@@ -43,14 +43,13 @@ struct RobotFacesView: View {
 struct HappyFace: View {
     var body: some View {
         ZStack{
-        
             FaceLineView()
-        
             VStack{
-                Spacer()
+                MSpacer(count: 3)
                 EyeLineView()
+                MSpacer(count: 2)
                 HappyMouth().mouthStyling()
-                Spacer()
+                MSpacer(count: 3)
             }
         }
     }
@@ -116,7 +115,7 @@ struct SurpriseFace: View {
             VStack{
                 Spacer()
                 EyeLineView()
-                SurprisedMouth().mouthStyling()
+                SurprisedMouth()
                 Spacer()
             }
         }
@@ -157,3 +156,13 @@ struct NeturalFace: View {
 }
 
 
+
+
+struct MSpacer: View {
+    var count: Int
+    var body: some View {
+        ForEach(0..<count, id: \.self) { _ in
+            Spacer()
+        }
+    }
+}

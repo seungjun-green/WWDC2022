@@ -28,12 +28,14 @@ struct ContentView: View {
         GeometryReader { geo in
             NavigationView{
                 VStack{
+                    
+                    
                     RobotFacesView(emotion: emotion).padding(.top)
                     
                     Spacer()
                     
                     RobotSayView(isActive: $isActive, shownText: $shownText, robotSay: $robotSay)
-                                        
+                    
                     VStack{
                         if speechMode {
                             SpeechView(userIsSpeaking: $userIsSpeaking, humanSay: $humanSay, isActive: $isActive, shownText: $shownText, robotSay: $robotSay, emotion: $emotion)

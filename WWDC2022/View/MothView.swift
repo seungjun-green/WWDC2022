@@ -28,14 +28,6 @@ struct LoveMouth: Shape {
     }
 }
 
-struct SurprisedMouth: Shape {
-    func path(in rect: CGRect) -> Path {
-        Path { path in
-            path.move(to: CGPoint(x:0, y:rect.size.height))
-            path.addQuadCurve(to: CGPoint(x:rect.size.width, y:rect.size.height), control: CGPoint(x:rect.size.width/2, y:rect.size.height*1.8))
-        }
-    }
-}
 
 struct NeturalMouth: Shape {
     func path(in rect: CGRect) -> Path {
@@ -64,6 +56,17 @@ struct AngryMouth: Shape {
         }
     }
 }
+
+struct SurprisedMouth: View {
+    var body: some View {
+        Circle().stroke(style: StrokeStyle(lineWidth: 2, lineCap: .square,  dash: [4], dashPhase:2))
+            .frame(width: 80, height: 80)
+            .foregroundColor(Color.blue)
+            .glow(color: .blue, radius: 12)
+    }
+    
+}
+
 
 struct FearMouth: Shape {
     func path(in rect: CGRect) -> Path {
