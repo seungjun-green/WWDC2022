@@ -15,3 +15,12 @@ struct FaceLineView: View {
             .glow(color: .blue, radius: 12)
     }
 }
+
+extension View {
+    func glow(color: Color = .blue, radius: CGFloat = 12) -> some View {
+        self
+            .overlay(self.blur(radius: 4))
+            .shadow(color: .blue, radius: 12)
+            .shadow(color: .blue, radius: 12)
+    }
+}

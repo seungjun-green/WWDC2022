@@ -29,9 +29,6 @@ struct EyeLineView: View {
     }
 }
 
-
-
-
 struct EyeView: View {
     var body: some View {
         Circle().stroke(style: StrokeStyle(lineWidth: 2, lineCap: .square,  dash: [4], dashPhase:2))

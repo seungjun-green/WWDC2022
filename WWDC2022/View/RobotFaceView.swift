@@ -21,6 +21,24 @@ struct RobotFacesView: View {
     }
     
     var body: some View {
+        VStack{
+            Text(emotion)
+        switch robotEmotion {
+        case "joy": HappyFace()
+        case "anger": AngryFace()
+        case "fear": FearFace()
+        case "love": LoveFace()
+        case "surprise": SurpriseFace()
+        case "sadness": SadFace()
+        default: NeturalFace()
+        }
+    }
+    }
+}
+
+
+struct HappyFace: View {
+    var body: some View {
         ZStack{
         
             FaceLineView()
@@ -28,18 +46,111 @@ struct RobotFacesView: View {
             VStack{
                 Spacer()
                 EyeLineView()
-                MouthView()
+                HappyMouth().mouthStyling()
                 Spacer()
             }
         }
     }
 }
 
-extension View {
-    func glow(color: Color = .blue, radius: CGFloat = 12) -> some View {
-        self
-            .overlay(self.blur(radius: 4))
-            .shadow(color: .blue, radius: 12)
-            .shadow(color: .blue, radius: 12)
+struct AngryFace: View {
+    var body: some View {
+        ZStack{
+        
+            FaceLineView()
+        
+            VStack{
+                Spacer()
+                EyeLineView()
+                AngryMouth().mouthStyling()
+                Spacer()
+            }
+        }
     }
 }
+
+
+struct FearFace: View {
+    var body: some View {
+        ZStack{
+        
+            FaceLineView()
+        
+            VStack{
+                Spacer()
+                EyeLineView()
+                FearMouth().mouthStyling()
+                Spacer()
+            }
+        }
+    }
+}
+
+
+struct LoveFace: View {
+    var body: some View {
+        ZStack{
+        
+            FaceLineView()
+        
+            VStack{
+                Spacer()
+                EyeLineView()
+                LoveMouth().mouthStyling()
+                Spacer()
+            }
+        }
+    }
+}
+
+
+struct SurpriseFace: View {
+    var body: some View {
+        ZStack{
+        
+            FaceLineView()
+        
+            VStack{
+                Spacer()
+                EyeLineView()
+                SurprisedMouth().mouthStyling()
+                Spacer()
+            }
+        }
+    }
+}
+
+
+struct SadFace: View {
+    var body: some View {
+        ZStack{
+        
+            FaceLineView()
+        
+            VStack{
+                Spacer()
+                EyeLineView()
+                SadMouth().mouthStyling()
+                Spacer()
+            }
+        }
+    }
+}
+
+struct NeturalFace: View {
+    var body: some View {
+        ZStack{
+        
+            FaceLineView()
+        
+            VStack{
+                Spacer()
+                EyeLineView()
+                NeturalMouth().mouthStyling()
+                Spacer()
+            }
+        }
+    }
+}
+
+
