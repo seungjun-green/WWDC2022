@@ -48,6 +48,7 @@ struct RobotSayView: View {
                 showCursor.toggle()
             }.font(Font.title)
             
-        }.padding(.horizontal)
+        }.frame(height: 110)
+        .padding(.horizontal)
     }
 }

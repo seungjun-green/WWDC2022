@@ -20,7 +20,6 @@ struct SpeechView: View {
         Button(action: {
             
             
-            
             if userIsSpeaking {
                 // stop recording
                 
@@ -41,15 +40,15 @@ struct SpeechView: View {
         }, label: {
             
             if userIsSpeaking {
-                MicAnimationView()
+                MicAnimationView().frame(height: 110)
             } else {
                 
+                VStack{
                 Image(systemName: "mic.circle")
                     .resizable()
                     .foregroundColor(.blue)
                     .frame(width: 70, height: 70)
-                    
-                
+                }.frame(height: 110)
             }
             
         })
