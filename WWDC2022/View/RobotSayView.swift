@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct RobotSayView: View {
+    
     @State private var timer = Timer.publish(every: 0.1, on: .current, in: .common).autoconnect()
     @State private var timer2 = Timer.publish(every: 0.5, on: .current, in: .common).autoconnect()
     @State private var curr = 0
@@ -27,28 +28,26 @@ struct RobotSayView: View {
     var body: some View {
         VStack{
             HStack{
-                
                 Text(shownText) + cursorView
-                
                 Spacer()
             }.foregroundColor(Color.green)
-            .onReceive(timer) { _ in
-                if isActive {
-                    if curr < robotSay.count  {
-                        shownText+=String(Array(robotSay)[curr])
-                        curr+=1
-                        showCursor.toggle()
-                    } else {
-                        isActive = false
-                        curr=0
+                .onReceive(timer) { _ in
+                    if isActive {
+                        if curr < robotSay.count  {
+                            shownText+=String(Array(robotSay)[curr])
+                            curr+=1
+                            showCursor.toggle()
+                        } else {
+                            isActive = false
+                            curr=0
+                        }
                     }
-                }
-                
-            }.onReceive(timer2) { _ in
-                showCursor.toggle()
-            }.font(Font.title)
+                    
+                }.onReceive(timer2) { _ in
+                    showCursor.toggle()
+                }.font(Font.title)
             
         }.frame(height: 110)
-        .padding(.horizontal)
+            .padding(.horizontal)
     }
 }
