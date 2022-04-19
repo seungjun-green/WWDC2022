@@ -19,19 +19,18 @@ struct KeyboardView: View {
     
     var body: some View {
         HStack{
-            
             TextField("HUMAN:", text: $humanSay)
                 .onChange(of: humanSay) { _ in
                     // analyze emoiton, then change face expression of bot
                     emotion = Brain.getEmotion(input: humanSay)
                 }
                 .textFieldStyle(.roundedBorder)
-                
             
             Spacer()
             
             Button {
-                generateRespond(input: humanSay)
+                robotSay = Brain.generateRespond(input: humanSay)
+                Speech.speak(sentence: robotSay)
                 
                 shownText = ""
                 isActive = true
@@ -41,20 +40,6 @@ struct KeyboardView: View {
             }
         }
         .padding()
-    }
-    
-    
-    func generateRespond(input: String){
-        do {
-            let config = MLModelConfiguration()
-            let model = try TagClassifier1(configuration: config)
-            let prediction = try model.prediction(text: humanSay)
-            robotSay =  Brain.get_response(label: prediction.label)
-            //speak(sentence: robotSay)
-        } catch {
-            print("Some error happend")
-            Speech.speak(sentence: "Unexpected error happend, Could you try again?")
-        }
     }
 }
 
