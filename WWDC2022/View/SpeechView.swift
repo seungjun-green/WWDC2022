@@ -16,50 +16,120 @@ struct SpeechView: View {
     @Binding var robotSay: String
     @Binding var emotion: String
     
+    @State private var audioRecorder: AVAudioRecorder!
+    @State private var recording = false
+    
     var body: some View {
-        Button(action: {
-            
-            
-            if userIsSpeaking {
-                // stop recording
+        VStack{
+            Button(action: {
                 
-                // trabscribe the recorded audio file
                 
-                //generate respond
-                getEmotion(input: humanSay)
-                generateRespond(input: humanSay)
+                if userIsSpeaking {
+                    // stop recording
+                    
+                    // trabscribe the recorded audio file
+                    
+                    //generate respond
+                    getEmotion(input: humanSay)
+                    generateRespond(input: humanSay)
+                    
+                    shownText = ""
+                    isActive = true
+                    
+                    
+                    stopRecording()
+                } else {
+                    // start recordingk
+                    startRecording()
+                }
                 
-                shownText = ""
-                isActive = true
-            } else {
-                // start recording
-            }
-            
-            userIsSpeaking.toggle()
-            
-        }, label: {
-            
-            if userIsSpeaking {
-                MicAnimationView().frame(height: 110)
-            } else {
+                userIsSpeaking.toggle()
                 
-                VStack{
-                Image(systemName: "mic.circle")
-                    .resizable()
-                    .foregroundColor(.blue)
-                    .frame(width: 70, height: 70)
-                }.frame(height: 110)
-            }
-            
-        })
+            }, label: {
+                
+                if userIsSpeaking {
+                    MicAnimationView().frame(height: 110)
+                } else {
+                    
+                    VStack{
+                        Image(systemName: "mic.circle")
+                            .resizable()
+                            .foregroundColor(.blue)
+                            .frame(width: 70, height: 70)
+                    }.frame(height: 110)
+                }
+                
+            })
+        }.onAppear{
+            //requestPermission()
+        }
     }
+    
+    func stopRecording() {
+            audioRecorder.stop()
+            recording = false
+            
+            //fetchRecordings()
+        }
+    
+    func fetchRecordings() {
+            
+            let fileManager = FileManager.default
+            let documentDirectory = fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0]
+            let directoryContents = try! fileManager.contentsOfDirectory(at: documentDirectory, includingPropertiesForKeys: nil)
+            for audio in directoryContents {
+                print(audio)
+            }
+                        
+           
+        }
+    
+    
+    func startRecording() {
+            let recordingSession = AVAudioSession.sharedInstance()
+            
+            do {
+                try recordingSession.setCategory(.playAndRecord, mode: .default)
+                try recordingSession.setActive(true)
+            } catch {
+                print("Failed to set up recording session")
+            }
+            
+            let documentPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+            let audioFilename = documentPath.appendingPathComponent("human.m4a")
+            
+            let settings = [
+                AVFormatIDKey: Int(kAudioFormatMPEG4AAC),
+                AVSampleRateKey: 12000,
+                AVNumberOfChannelsKey: 1,
+                AVEncoderAudioQualityKey: AVAudioQuality.high.rawValue
+            ]
+            
+            do {
+                audioRecorder = try AVAudioRecorder(url: audioFilename, settings: settings)
+                audioRecorder.record()
+                recording = true
+            } catch {
+                print("Could not start recording")
+            }
+        }
+    
+    func requestPermission() {
+            SFSpeechRecognizer.requestAuthorization { authStatus in
+                if authStatus == .authorized {
+                    print("Thanks")
+                } else {
+                    print("Speech Failed")
+                }
+            }
+        }
     
     func getEmotion(input: String) {
         do {
             let config = MLModelConfiguration()
             let model = try EmotionClassifierPro(configuration: config)
             let prediction = try model.prediction(text: input)
-           emotion = prediction.label
+            emotion = prediction.label
         } catch {
             print("Some error happend")
         }
@@ -90,6 +160,7 @@ struct SpeechView: View {
         let data = DataR()
         return data.output[label]?["responses"]?.randomElement() ?? "OK"
     }
+    
 }
 
 struct MicAnimationView: View {
@@ -100,11 +171,11 @@ struct MicAnimationView: View {
     
     var body: some View {
         TimelineView(.periodic(from: Date(), by: 0.085)){ context in
-        HStack{
-            ForEach(0..<20) { _ in
-                Rectangle().fill(Color.blue).frame(width: 3, height: barHeight)
+            HStack{
+                ForEach(0..<20) { _ in
+                    Rectangle().fill(Color.blue).frame(width: 3, height: barHeight)
+                }
             }
         }
-    }
     }
 }

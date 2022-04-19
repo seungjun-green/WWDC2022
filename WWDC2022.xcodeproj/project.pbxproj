@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C0264C4F280E920700FEF2B0 /* EmotionClassifierM.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = C0264C4E280E920700FEF2B0 /* EmotionClassifierM.mlmodel */; };
 		C0DFF892280DAA9700C75B7C /* WWDC2022App.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DFF891280DAA9700C75B7C /* WWDC2022App.swift */; };
 		C0DFF894280DAA9700C75B7C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DFF893280DAA9700C75B7C /* ContentView.swift */; };
 		C0DFF896280DAA9900C75B7C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C0DFF895280DAA9900C75B7C /* Assets.xcassets */; };
@@ -25,6 +26,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C0264C4E280E920700FEF2B0 /* EmotionClassifierM.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = EmotionClassifierM.mlmodel; sourceTree = "<group>"; };
 		C0DFF88E280DAA9700C75B7C /* WWDC2022.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WWDC2022.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0DFF891280DAA9700C75B7C /* WWDC2022App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WWDC2022App.swift; sourceTree = "<group>"; };
 		C0DFF893280DAA9700C75B7C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -109,6 +111,7 @@
 		C0DFF8A0280DAAB400C75B7C /* ml models */ = {
 			isa = PBXGroup;
 			children = (
+				C0264C4E280E920700FEF2B0 /* EmotionClassifierM.mlmodel */,
 				C0DFF8A9280DAB3800C75B7C /* EmotionClassifier.mlmodel */,
 				C0DFF8AA280DAB3800C75B7C /* EmotionClassifierPro.mlmodel */,
 				C0DFF8AB280DAB3800C75B7C /* TagClassifier1.mlmodel */,
@@ -205,6 +208,7 @@
 				C0DFF8A6280DAB0600C75B7C /* SpeechView.swift in Sources */,
 				C0DFF8AD280DAB3800C75B7C /* EmotionClassifierPro.mlmodel in Sources */,
 				C0DFF8A4280DAAF100C75B7C /* RobotSayView.swift in Sources */,
+				C0264C4F280E920700FEF2B0 /* EmotionClassifierM.mlmodel in Sources */,
 				C0DFF8AC280DAB3800C75B7C /* EmotionClassifier.mlmodel in Sources */,
 				C0DFF8B5280DACC800C75B7C /* FaceLineView.swift in Sources */,
 			);

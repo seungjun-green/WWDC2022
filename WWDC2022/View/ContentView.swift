@@ -12,6 +12,8 @@ import CoreML
 import NaturalLanguage
 import Speech
 import SwiftUI
+import AVFoundation
+
 
 struct ContentView: View {
     
@@ -39,9 +41,7 @@ struct ContentView: View {
                                 Spacer()
                                 
                             }
-                            
-                           
-                    
+                                                
                     } else {
                         ZStack{
                             VStack{
