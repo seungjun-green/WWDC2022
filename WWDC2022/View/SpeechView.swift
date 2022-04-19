@@ -16,11 +16,13 @@ struct SpeechView: View {
     @Binding var shownText: String
     @Binding var robotSay: String
     @Binding var emotion: String
+    @Binding var transcribeDone: Bool
+    @Binding var recording: Bool
     
     @State private var audioRecorder: AVAudioRecorder!
-    @State private var recording = false
     @State private var transcribedText = ""
     
+
     var body: some View {
         VStack{
             
@@ -31,10 +33,11 @@ struct SpeechView: View {
                     }
                     
                 } else {
-                    Text(transcribedText)
+                    Text(transcribedText).onAppear{
+                        transcribeDone = true
+                    }
                 }
             }
-            
             
             Button(action: {
                 
@@ -50,6 +53,7 @@ struct SpeechView: View {
                    
                 } else {
                     transcribedText = ""
+                    transcribeDone = false
                     requestPermission()
                     startRecording()
                 }
@@ -70,6 +74,8 @@ struct SpeechView: View {
                 }
                 
             })
+        }.onAppear{
+            isActive = false
         }
     }
     

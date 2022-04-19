@@ -24,6 +24,8 @@ struct ContentView: View {
     @State private var speechMode = true
     @State private var userIsSpeaking = false
     @State private var emotion = ""
+    @State private var transcribeFinished = false
+    @State private var isRecording = false
     @FocusState var userTyping: Bool
     
     var body: some View {
@@ -33,20 +35,20 @@ struct ContentView: View {
                 VStack{
                     if speechMode {
                         
-                            VStack{
-                                RobotFacesView(emotion: emotion).padding(.top)
-                                Spacer()
-                                RobotSayView(isActive: $isActive, shownText: $shownText, robotSay: $robotSay)
-                                SpeechView(userIsSpeaking: $userIsSpeaking, humanSay: $humanSay, isActive: $isActive, shownText: $shownText, robotSay: $robotSay, emotion: $emotion).padding(.bottom)
-                                Spacer()
-                                
-                            }
+                        VStack{
+                            RobotFacesView(emotion: emotion).padding(.top)
+                            Spacer()
+                            RobotSayView(isActive: $isActive, shownText: $shownText, robotSay: $robotSay, transcribeDone: $transcribeFinished)
+                            SpeechView(userIsSpeaking: $userIsSpeaking, humanSay: $humanSay, isActive: $isActive, shownText: $shownText, robotSay: $robotSay, emotion: $emotion, transcribeDone: $transcribeFinished, recording: $isRecording).padding(.bottom)
+                            Spacer()
+                            
+                        }
                     } else {
                         ZStack{
                             VStack{
                                 RobotFacesView(emotion: emotion).padding(.top)
                                 Spacer()
-                                RobotSayView(isActive: $isActive, shownText: $shownText, robotSay: $robotSay)
+                                RobotSayView(isActive: $isActive, shownText: $shownText, robotSay: $robotSay, transcribeDone: $transcribeFinished)
                                 Spacer().frame(height: geo.size.height * 0.4)
                             }
                             
@@ -57,38 +59,40 @@ struct ContentView: View {
                             }
                         }
                     }
-    
+                    
                     
                 }
                 .navigationTitle("Humanoid")
-                    .toolbar {
-                        ToolbarItemGroup(placement: .keyboard) {
-                            
-                            Button("Clear All") {
-                                humanSay = ""
-                            }
-                            
-                            Spacer()
-                            
-                            Button("Done") {
-                                userTyping = false
-                            }
+                .toolbar {
+                    ToolbarItemGroup(placement: .keyboard) {
+                        
+                        Button("Clear All") {
+                            humanSay = ""
                         }
                         
+                        Spacer()
                         
-                        ToolbarItemGroup(placement: .navigationBarTrailing) {
-                            Button {
-                                speechMode.toggle()
-                            } label: {
-                                if speechMode {
-                                    Image(systemName: "mic")
-                                } else {
-                                    Image(systemName: "keyboard")
-                                }
-                            }
-                            
+                        Button("Done") {
+                            userTyping = false
                         }
                     }
+                    
+                    
+                    ToolbarItemGroup(placement: .navigationBarTrailing) {
+                        Button {
+                            if !isRecording {
+                                speechMode.toggle()
+                            }
+                        } label: {
+                            if speechMode {
+                                Image(systemName: "mic")
+                            } else {
+                                Image(systemName: "keyboard")
+                            }
+                        }
+                        
+                    }
+                }
             }.preferredColorScheme(.dark)
         }
     }

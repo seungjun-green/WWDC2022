@@ -16,6 +16,7 @@ struct RobotSayView: View {
     @Binding var isActive: Bool
     @Binding var shownText: String
     @Binding var robotSay: String
+    @Binding var transcribeDone: Bool
     
     var cursorView: Text {
         if shownText.isEmpty || showCursor == false {
@@ -32,7 +33,7 @@ struct RobotSayView: View {
                 Spacer()
             }.foregroundColor(Color.green)
                 .onReceive(timer) { _ in
-                    if isActive {
+                    if isActive && transcribeDone {
                         if curr < robotSay.count  {
                             shownText+=String(Array(robotSay)[curr])
                             curr+=1
