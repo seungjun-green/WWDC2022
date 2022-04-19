@@ -27,24 +27,38 @@ struct ContentView: View {
     var body: some View {
         GeometryReader { geo in
             NavigationView{
+                
                 VStack{
+                    if speechMode {
+                        
+                            VStack{
+                                RobotFacesView(emotion: emotion).padding(.top)
+                                Spacer()
+                                RobotSayView(isActive: $isActive, shownText: $shownText, robotSay: $robotSay)
+                                SpeechView(userIsSpeaking: $userIsSpeaking, humanSay: $humanSay, isActive: $isActive, shownText: $shownText, robotSay: $robotSay, emotion: $emotion).padding(.bottom)
+                                Spacer()
+                                
+                            }
+                            
+                           
                     
-                    
-                    RobotFacesView(emotion: emotion).padding(.top)
-                    
-                    Spacer()
-                    
-                    RobotSayView(isActive: $isActive, shownText: $shownText, robotSay: $robotSay)
-                    
-                    VStack{
-                        if speechMode {
-                            SpeechView(userIsSpeaking: $userIsSpeaking, humanSay: $humanSay, isActive: $isActive, shownText: $shownText, robotSay: $robotSay, emotion: $emotion)
-                        } else {
-                            KeyboardView(isActive: $isActive, shownText: $shownText, robotSay: $robotSay, humanSay: $humanSay, emotion: $emotion).focused($userTyping).ignoresSafeArea(.keyboard)
+                    } else {
+                        ZStack{
+                            VStack{
+                                RobotFacesView(emotion: emotion).padding(.top)
+                                Spacer()
+                                RobotSayView(isActive: $isActive, shownText: $shownText, robotSay: $robotSay)
+                                Spacer().frame(height: geo.size.height * 0.4)
+                            }
+                            
+                            VStack{
+                                Spacer().frame(height: geo.size.height * 0.6)
+                                
+                                KeyboardView(isActive: $isActive, shownText: $shownText, robotSay: $robotSay, humanSay: $humanSay, emotion: $emotion).focused($userTyping).ignoresSafeArea(.keyboard)
+                            }
                         }
                     }
-                    
-                    Spacer()
+    
                     
                 }
                 .navigationTitle("Humanoid")
