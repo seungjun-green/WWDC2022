@@ -40,13 +40,14 @@ struct ContentView: View {
                         if speechMode {
                             SpeechView(userIsSpeaking: $userIsSpeaking, humanSay: $humanSay, isActive: $isActive, shownText: $shownText, robotSay: $robotSay, emotion: $emotion)
                         } else {
-                            KeyboardView(isActive: $isActive, shownText: $shownText, robotSay: $robotSay, humanSay: $humanSay, emotion: $emotion).focused($userTyping)
+                            KeyboardView(isActive: $isActive, shownText: $shownText, robotSay: $robotSay, humanSay: $humanSay, emotion: $emotion).focused($userTyping).ignoresSafeArea(.keyboard)
                         }
                     }
                     
                     Spacer()
                     
-                }.navigationTitle("Humanoid")
+                }
+                .navigationTitle("Humanoid")
                     .toolbar {
                         ToolbarItemGroup(placement: .keyboard) {
                             

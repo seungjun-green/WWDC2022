@@ -14,18 +14,29 @@ struct RobotFacesView: View {
     
     
     
-    var robotEmotion: String {
-//        if emotion.isEmpty || emotion == "neatural" {
-//            return "netural"
-//        } else {
-//            return emotion
-//        }
-        "surprise"
-    }
+//    var robotEmotion: String {
+////        if emotion.isEmpty || emotion == "neatural" {
+////            return "netural"
+////        } else {
+////            return emotion
+////        }
+//        "surprise"
+//    }
+    
+    
+    var colors = ["joy", "anger", "fear", "love", "surprise", "sadness"]
+    @State private var robotEmotion = "joy"
     
     var body: some View {
         VStack{
             Text(emotion)
+            Picker("Please choose a color", selection: $robotEmotion) {
+                            ForEach(colors, id: \.self) {
+                                Text($0)
+                            }
+            }.pickerStyle(.segmented)
+            
+            
         switch robotEmotion {
         case "joy": HappyFace()
         case "anger": AngryFace()
