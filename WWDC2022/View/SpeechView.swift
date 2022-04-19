@@ -25,6 +25,7 @@ struct SpeechView: View {
                 
                 
                 if userIsSpeaking {
+                    
                     // stop recording
                     
                     // trabscribe the recorded audio file
@@ -37,10 +38,11 @@ struct SpeechView: View {
                     isActive = true
                     
                     
-                    stopRecording()
+//                    stopRecording()
                 } else {
+                    requestPermission()
                     // start recordingk
-                    startRecording()
+//                    startRecording()
                 }
                 
                 userIsSpeaking.toggle()
