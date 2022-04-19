@@ -21,13 +21,14 @@ struct SpeechView: View {
     
     @State private var audioRecorder: AVAudioRecorder!
     @State private var transcribedText = ""
+    @State private var errorHappend = false
     
 
     var body: some View {
         VStack{
             
             TimelineView(.animation) { _ in
-                if transcribedText.isEmpty {
+                if transcribedText.isEmpty && errorHappend == false{
                     if isActive {
                         ProgressView()
                     }
@@ -47,11 +48,11 @@ struct SpeechView: View {
                     //generate respond
                     getEmotion(input: humanSay)
                     generateRespond(input: humanSay)
-                    
                     shownText = ""
                     isActive = true
                    
                 } else {
+                    errorHappend = false
                     transcribedText = ""
                     transcribeDone = false
                     requestPermission()
@@ -86,12 +87,15 @@ struct SpeechView: View {
             recognizer?.recognitionTask(with: request) { (result, error) in
                 guard let result = result else {
                     print("some error happend")
+                    humanSay = ""
+                    errorHappend = true
                     return
                 }
-                
                 if result.isFinal {
                     print(result.bestTranscription.formattedString)
                     transcribedText = result.bestTranscription.formattedString
+                    humanSay = transcribedText
+                    print(humanSay)
                 }
             }
         }
@@ -164,6 +168,10 @@ struct SpeechView: View {
     }
     
     func generateRespond(input: String){
+        if input == "" {
+            robotSay = "U gotta say something"
+            speak(sentence: "U gotta say something")
+        } else {
         do {
             let config = MLModelConfiguration()
             let model = try TagClassifier1(configuration: config)
@@ -173,6 +181,7 @@ struct SpeechView: View {
         } catch {
             print("Some error happend")
             speak(sentence: "Unexpected error happend, Could you try again?")
+        }
         }
     }
     
