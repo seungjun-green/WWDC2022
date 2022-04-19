@@ -23,7 +23,19 @@ struct SpeechView: View {
     
     var body: some View {
         VStack{
-            Text(transcribedText)
+            
+            TimelineView(.animation) { _ in
+                if transcribedText.isEmpty {
+                    if isActive {
+                        ProgressView()
+                    }
+                    
+                } else {
+                    Text(transcribedText)
+                }
+            }
+            
+            
             Button(action: {
                 
                 if userIsSpeaking {
@@ -37,6 +49,7 @@ struct SpeechView: View {
                     isActive = true
                    
                 } else {
+                    transcribedText = ""
                     requestPermission()
                     startRecording()
                 }
