@@ -18,9 +18,12 @@ struct SpeechView: View {
     
     @State private var audioRecorder: AVAudioRecorder!
     @State private var recording = false
+    @State private var transcribedText = ""
     
     var body: some View {
         VStack{
+            Text("ddd")
+            Text(transcribedText)
             Button(action: {
                 
                 
@@ -38,11 +41,11 @@ struct SpeechView: View {
                     isActive = true
                     
                     
-//                    stopRecording()
+                   stopRecording()
                 } else {
                     requestPermission()
                     // start recordingk
-//                    startRecording()
+                 startRecording()
                 }
                 
                 userIsSpeaking.toggle()
@@ -67,11 +70,34 @@ struct SpeechView: View {
         }
     }
     
+    func transcribeAudio(url: URL) {
+            // create a new recognizer and point it at our audio
+            let recognizer = SFSpeechRecognizer()
+            let request = SFSpeechURLRecognitionRequest(url: url)
+            
+            // start recognition!
+            recognizer?.recognitionTask(with: request) { (result, error) in
+                // abort if we didn't get any transcription back
+                guard let result = result else {
+                    print("There was an error: \(error!)")
+                    return
+                }
+                print("transcribin1g")
+                // if we got the final transcription back, print it
+                if result.isFinal {
+                    // pull out the best transcription...
+                    print("transcribing")
+                    print(result.bestTranscription.formattedString)
+                    transcribedText = result.bestTranscription.formattedString
+                }
+            }
+        }
+    
     func stopRecording() {
             audioRecorder.stop()
             recording = false
             
-            //fetchRecordings()
+            fetchRecordings()
         }
     
     func fetchRecordings() {
@@ -80,12 +106,12 @@ struct SpeechView: View {
             let documentDirectory = fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0]
             let directoryContents = try! fileManager.contentsOfDirectory(at: documentDirectory, includingPropertiesForKeys: nil)
             for audio in directoryContents {
-                print(audio)
+                print("----")
+                transcribeAudio(url: audio)
             }
-                        
-           
+            
+            
         }
-    
     
     func startRecording() {
             let recordingSession = AVAudioSession.sharedInstance()
