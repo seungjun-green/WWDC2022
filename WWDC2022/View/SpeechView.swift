@@ -22,9 +22,6 @@ struct SpeechView: View {
     @State private var audioRecorder: AVAudioRecorder!
     @State private var transcribedText = ""
     @State private var errorHappend = false
-    
-    
-    
 
     var body: some View {
         VStack{
@@ -49,7 +46,8 @@ struct SpeechView: View {
                     stopRecording()
                     //generate respond
                     emotion = Brain.getEmotion(input: humanSay)
-                    generateRespond(input: humanSay)
+                    robotSay = Brain.generateRespond(input: humanSay)
+                    Speech.speak(sentence: robotSay)
                     shownText = ""
                     isActive = true
                 } else {
@@ -105,7 +103,6 @@ struct SpeechView: View {
         
             audioRecorder.stop()
             recording = false
-            
             fetchRecordings()
         }
     
@@ -146,27 +143,6 @@ struct SpeechView: View {
                 print("Could not start recording")
             }
         }
-    
-    
-    
-    
-    func generateRespond(input: String){
-        if input == "" {
-            robotSay = "U gotta say something"
-            Speech.speak(sentence: "U gotta say something")
-        } else {
-        do {
-            let config = MLModelConfiguration()
-            let model = try TagClassifier1(configuration: config)
-            let prediction = try model.prediction(text: humanSay)
-            robotSay =  Brain.get_response(label: prediction.label)
-            Speech.speak(sentence: robotSay)
-        } catch {
-            print("Some error happend")
-            Speech.speak(sentence: "Unexpected error happend, Could you try again?")
-        }
-        }
-    }
 }
 
 struct MicAnimationView: View {
