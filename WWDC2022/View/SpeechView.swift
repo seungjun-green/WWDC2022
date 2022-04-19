@@ -23,6 +23,8 @@ struct SpeechView: View {
     @State private var transcribedText = ""
     @State private var errorHappend = false
     
+    
+    
 
     var body: some View {
         VStack{
@@ -46,16 +48,15 @@ struct SpeechView: View {
                     
                     stopRecording()
                     //generate respond
-                    getEmotion(input: humanSay)
+                    emotion = Brain.getEmotion(input: humanSay)
                     generateRespond(input: humanSay)
                     shownText = ""
                     isActive = true
-                   
                 } else {
                     errorHappend = false
                     transcribedText = ""
                     transcribeDone = false
-                    requestPermission()
+                    Speech.requestPermission()
                     startRecording()
                 }
                 
@@ -146,58 +147,26 @@ struct SpeechView: View {
             }
         }
     
-    func requestPermission() {
-            SFSpeechRecognizer.requestAuthorization { authStatus in
-                if authStatus == .authorized {
-                    print("Thanks")
-                } else {
-                    print("Speech Failed")
-                }
-            }
-        }
     
-    func getEmotion(input: String) {
-        do {
-            let config = MLModelConfiguration()
-            let model = try EmotionClassifierPro(configuration: config)
-            let prediction = try model.prediction(text: input)
-            emotion = prediction.label
-        } catch {
-            print("Some error happend")
-        }
-    }
+    
     
     func generateRespond(input: String){
         if input == "" {
             robotSay = "U gotta say something"
-            speak(sentence: "U gotta say something")
+            Speech.speak(sentence: "U gotta say something")
         } else {
         do {
             let config = MLModelConfiguration()
             let model = try TagClassifier1(configuration: config)
             let prediction = try model.prediction(text: humanSay)
-            robotSay =  get_response(label: prediction.label)
-            //speak(sentence: robotSay)
+            robotSay =  Brain.get_response(label: prediction.label)
+            Speech.speak(sentence: robotSay)
         } catch {
             print("Some error happend")
-            speak(sentence: "Unexpected error happend, Could you try again?")
+            Speech.speak(sentence: "Unexpected error happend, Could you try again?")
         }
         }
     }
-    
-    func speak(sentence: String) {
-        let utterance = AVSpeechUtterance(string: sentence)
-        utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
-        utterance.rate = 0.5
-        let synthesizer = AVSpeechSynthesizer()
-        synthesizer.speak(utterance)
-    }
-    
-    func get_response(label: String) -> String {
-        let data = DataR()
-        return data.output[label]?["responses"]?.randomElement() ?? "OK"
-    }
-    
 }
 
 struct MicAnimationView: View {
