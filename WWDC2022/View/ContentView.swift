@@ -41,7 +41,6 @@ struct ContentView: View {
                                 Spacer()
                                 
                             }
-                                                
                     } else {
                         ZStack{
                             VStack{

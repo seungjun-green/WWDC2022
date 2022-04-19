@@ -9,6 +9,7 @@ import Speech
 import SwiftUI
 
 struct SpeechView: View {
+    
     @Binding var userIsSpeaking: Bool
     @Binding var humanSay: String
     @Binding var isActive: Bool
@@ -22,30 +23,22 @@ struct SpeechView: View {
     
     var body: some View {
         VStack{
-            Text("ddd")
             Text(transcribedText)
             Button(action: {
                 
-                
                 if userIsSpeaking {
                     
-                    // stop recording
-                    
-                    // trabscribe the recorded audio file
-                    
+                    stopRecording()
                     //generate respond
                     getEmotion(input: humanSay)
                     generateRespond(input: humanSay)
                     
                     shownText = ""
                     isActive = true
-                    
-                    
-                   stopRecording()
+                   
                 } else {
                     requestPermission()
-                    // start recordingk
-                 startRecording()
+                    startRecording()
                 }
                 
                 userIsSpeaking.toggle()
@@ -55,7 +48,6 @@ struct SpeechView: View {
                 if userIsSpeaking {
                     MicAnimationView().frame(height: 110)
                 } else {
-                    
                     VStack{
                         Image(systemName: "mic.circle")
                             .resizable()
@@ -65,28 +57,20 @@ struct SpeechView: View {
                 }
                 
             })
-        }.onAppear{
-            //requestPermission()
         }
     }
     
     func transcribeAudio(url: URL) {
-            // create a new recognizer and point it at our audio
             let recognizer = SFSpeechRecognizer()
             let request = SFSpeechURLRecognitionRequest(url: url)
             
-            // start recognition!
             recognizer?.recognitionTask(with: request) { (result, error) in
-                // abort if we didn't get any transcription back
                 guard let result = result else {
-                    print("There was an error: \(error!)")
+                    print("some error happend")
                     return
                 }
-                print("transcribin1g")
-                // if we got the final transcription back, print it
+                
                 if result.isFinal {
-                    // pull out the best transcription...
-                    print("transcribing")
                     print(result.bestTranscription.formattedString)
                     transcribedText = result.bestTranscription.formattedString
                 }
@@ -94,6 +78,7 @@ struct SpeechView: View {
         }
     
     func stopRecording() {
+        
             audioRecorder.stop()
             recording = false
             
@@ -101,16 +86,12 @@ struct SpeechView: View {
         }
     
     func fetchRecordings() {
-            
             let fileManager = FileManager.default
             let documentDirectory = fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0]
             let directoryContents = try! fileManager.contentsOfDirectory(at: documentDirectory, includingPropertiesForKeys: nil)
             for audio in directoryContents {
-                print("----")
                 transcribeAudio(url: audio)
             }
-            
-            
         }
     
     func startRecording() {
@@ -120,7 +101,7 @@ struct SpeechView: View {
                 try recordingSession.setCategory(.playAndRecord, mode: .default)
                 try recordingSession.setActive(true)
             } catch {
-                print("Failed to set up recording session")
+                print("Some error happened")
             }
             
             let documentPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
