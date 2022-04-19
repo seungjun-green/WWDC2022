@@ -42,7 +42,6 @@ struct SpeechView: View {
             Button(action: {
                 
                 if userIsSpeaking {
-                    
                     stopRecording()
                     //generate respond
                     emotion = Brain.getEmotion(input: humanSay)
@@ -100,7 +99,6 @@ struct SpeechView: View {
         }
     
     func stopRecording() {
-        
             audioRecorder.stop()
             recording = false
             fetchRecordings()
@@ -144,6 +142,11 @@ struct SpeechView: View {
             }
         }
 }
+
+
+
+
+
 
 struct MicAnimationView: View {
     

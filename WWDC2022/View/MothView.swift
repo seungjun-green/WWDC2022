@@ -17,8 +17,6 @@ struct HappyMouth: Shape {
     }
 }
 
-
-
 struct LoveMouth: Shape {
     func path(in rect: CGRect) -> Path {
         Path { path in
@@ -27,7 +25,6 @@ struct LoveMouth: Shape {
         }
     }
 }
-
 
 struct NeturalMouth: Shape {
     func path(in rect: CGRect) -> Path {

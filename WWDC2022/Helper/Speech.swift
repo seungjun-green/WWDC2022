@@ -10,8 +10,6 @@ import Speech
 
 class Speech {
     
-
-    
     static func speak(sentence: String) {
         let utterance = AVSpeechUtterance(string: sentence)
         utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
