@@ -14,7 +14,6 @@ struct EyeLineView: View {
         HStack{
             Spacer()
             Spacer()
-            Spacer()
             
             Eye2().frame(width: geo.size.height * 0.1, height: geo.size.height * 0.1)
             
@@ -26,8 +25,7 @@ struct EyeLineView: View {
             
             Spacer()
             Spacer()
-            Spacer()
-        }
+        }.frame(width: geo.size.height * 0.93)
     }
 }
 
