@@ -57,105 +57,123 @@ struct HappyFace: View {
     }
 }
 
-//struct AngryFace: View {
-//    var body: some View {
-//        ZStack{
-//
-//            FaceLineView()
-//
-//            VStack{
-//                Spacer()
-//                EyeLineView()
-//                AngryMouth().mouthStyling()
-//                Spacer()
-//            }
-//        }
-//    }
-//}
-//
-//
-//struct FearFace: View {
-//    var body: some View {
-//        ZStack{
-//
-//            FaceLineView()
-//
-//            VStack{
-//                Spacer()
-//                EyeLineView()
-//                FearMouth().mouthStyling()
-//                Spacer()
-//            }
-//        }
-//    }
-//}
-//
-//
-//struct LoveFace: View {
-//    var body: some View {
-//        ZStack{
-//
-//            FaceLineView()
-//
-//            VStack{
-//                Spacer()
-//                EyeLineView()
-//                LoveMouth().mouthStyling()
-//                Spacer()
-//            }
-//        }
-//    }
-//}
-//
-//
-//struct SurpriseFace: View {
-//    var body: some View {
-//        ZStack{
-//
-//            FaceLineView()
-//
-//            VStack{
-//                Spacer()
-//                EyeLineView()
-//                SurprisedMouth()
-//                Spacer()
-//            }
-//        }
-//    }
-//}
-//
-//
-//struct SadFace: View {
-//    var body: some View {
-//        ZStack{
-//
-//            FaceLineView()
-//
-//            VStack{
-//                Spacer()
-//                EyeLineView()
-//                SadMouth().mouthStyling()
-//                Spacer()
-//            }
-//        }
-//    }
-//}
-//
-//struct NeturalFace: View {
-//    var body: some View {
-//        ZStack{
-//
-//            FaceLineView()
-//
-//            VStack{
-//                Spacer()
-//                EyeLineView()
-//                NeturalMouth().mouthStyling()
-//                Spacer()
-//            }
-//        }
-//    }
-//}
+struct AngryFace: View {
+    var body: some View {
+        GeometryReader { geo in
+            ZStack{
+
+                FaceLineView()
+
+                VStack{
+                    Spacer()
+                    EyeLineView(geo: geo)
+                    AngryMouth().mouthStyling().frame(width: geo.size.height * 0.47, height: geo.size.height * 0.195)
+                    Spacer()
+                }
+            }
+
+        }
+    }
+}
+
+
+struct FearFace: View {
+    var body: some View {
+        GeometryReader {geo in
+            ZStack{
+
+                FaceLineView()
+
+                VStack{
+                    Spacer()
+                    EyeLineView(geo: geo)
+                    FearMouth().mouthStyling().frame(width: geo.size.height * 0.47, height: geo.size.height * 0.195)
+                    Spacer()
+                }
+            }
+        }
+      
+    }
+}
+
+
+struct LoveFace: View {
+    var body: some View {
+        GeometryReader {geo in
+            ZStack{
+
+                FaceLineView()
+
+                VStack{
+                    Spacer()
+                    EyeLineView(geo: geo)
+                    LoveMouth().mouthStyling().frame(width: geo.size.height * 0.47, height: geo.size.height * 0.195)
+                    Spacer()
+                }
+            }
+        }
+        
+    }
+}
+
+
+struct SurpriseFace: View {
+    var body: some View {
+        GeometryReader {geo in
+            ZStack{
+
+                FaceLineView()
+
+                VStack{
+                    Spacer()
+                    EyeLineView(geo: geo)
+                    SurprisedMouth().frame(width: geo.size.height * 0.47, height: geo.size.height * 0.195)
+                    Spacer()
+                }
+            }
+
+        }
+    }
+}
+
+
+struct SadFace: View {
+    var body: some View {
+        GeometryReader{geo in
+            ZStack{
+
+                FaceLineView()
+
+                VStack{
+                    Spacer()
+                    EyeLineView(geo: geo)
+                    SadMouth().mouthStyling().frame(width: geo.size.height * 0.47, height: geo.size.height * 0.195)
+                    Spacer()
+                }
+            }
+        }
+      
+    }
+}
+
+struct NeturalFace: View {
+    var body: some View {
+        GeometryReader {geo in
+            ZStack{
+
+                FaceLineView()
+
+                VStack{
+                    Spacer()
+                    EyeLineView(geo: geo)
+                    NeturalMouth().mouthStyling().frame(width: geo.size.height * 0.47, height: geo.size.height * 0.195)
+                    Spacer()
+                }
+            }
+        }
+        
+    }
+}
 
 
 struct MSpacer: View {
