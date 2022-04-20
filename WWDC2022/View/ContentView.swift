@@ -26,6 +26,7 @@ struct ContentView: View {
     @State private var emotion = ""
     @State private var transcribeFinished = false
     @State private var isRecording = false
+    @State private var curr = 0
     @FocusState var userTyping: Bool
     
     var body: some View {
@@ -38,7 +39,7 @@ struct ContentView: View {
                         VStack{
                             RobotFacesView(emotion: emotion).padding(.top)
                             Spacer()
-                            RobotTypingView(robotTyping: $robotTyping, shownText: $shownText, robotSay: $robotSay, transcribeDone: $transcribeFinished)
+                            RobotTypingView(robotTyping: $robotTyping, shownText: $shownText, robotSay: $robotSay, transcribeDone: $transcribeFinished, curr: $curr)
                             SpeechView(userIsSpeaking: $userIsSpeaking, humanSay: $humanSay, robotTyping: $robotTyping, shownText: $shownText, robotSay: $robotSay, emotion: $emotion, transcribeDone: $transcribeFinished, recording: $isRecording).padding(.bottom)
                             Spacer()
                             
@@ -48,14 +49,14 @@ struct ContentView: View {
                             VStack{
                                 RobotFacesView(emotion: emotion).padding(.top)
                                 Spacer()
-                                RobotTypingView(robotTyping: $robotTyping, shownText: $shownText, robotSay: $robotSay, transcribeDone: $transcribeFinished)
+                                RobotTypingView(robotTyping: $robotTyping, shownText: $shownText, robotSay: $robotSay, transcribeDone: $transcribeFinished, curr: $curr)
                                 Spacer().frame(height: geo.size.height * 0.4)
                             }
                             
                             VStack{
                                 Spacer().frame(height: geo.size.height * 0.6)
                                 
-                                KeyboardView(robotTyping: $robotTyping, shownText: $shownText, robotSay: $robotSay, humanSay: $humanSay, emotion: $emotion).focused($userTyping).ignoresSafeArea(.keyboard)
+                                KeyboardView(robotTyping: $robotTyping, shownText: $shownText, robotSay: $robotSay, humanSay: $humanSay, emotion: $emotion, curr: $curr).focused($userTyping).ignoresSafeArea(.keyboard)
                             }
                         }
                     }
@@ -80,7 +81,7 @@ struct ContentView: View {
                     
                     ToolbarItemGroup(placement: .navigationBarTrailing) {
                         Button {
-                            if !isRecording {
+                            if !isRecording && robotTyping == false {
                                 speechMode.toggle()
                             }
                         } label: {

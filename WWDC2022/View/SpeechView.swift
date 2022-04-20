@@ -22,8 +22,7 @@ struct SpeechView: View {
     @State private var audioRecorder: AVAudioRecorder!
     @State private var transcribedText = ""
     @State private var errorHappend = false
-    
-    
+        
     var transcribing: Bool {
         transcribedText.isEmpty && errorHappend == false && robotTyping
     }
@@ -51,6 +50,7 @@ struct SpeechView: View {
                     
                     shownText = ""
                     robotTyping = true
+                    
                 } else {
                     errorHappend = false
                     transcribedText = ""
@@ -94,6 +94,7 @@ struct SpeechView: View {
                     print(result.bestTranscription.formattedString)
                     transcribedText = result.bestTranscription.formattedString
                     humanSay = transcribedText
+                    transcribeDone = true
                     print(humanSay)
                 }
             }

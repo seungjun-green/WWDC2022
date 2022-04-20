@@ -15,6 +15,7 @@ struct KeyboardView: View {
     @Binding var robotSay: String
     @Binding var humanSay: String
     @Binding var emotion: String
+    @Binding var curr: Int
     @FocusState var userTyping: Bool
     
     var body: some View {
@@ -29,6 +30,7 @@ struct KeyboardView: View {
             Spacer()
             
             Button {
+                curr = 0
                 robotSay = Brain.generateRespond(input: humanSay)
                 Speech.speak(sentence: robotSay)
                 
