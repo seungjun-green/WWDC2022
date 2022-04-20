@@ -20,7 +20,7 @@ struct ContentView: View {
     @State private var humanSay = "Hi"
     @State private var robotSay = ""
     @State private var shownText = ""
-    @State private var isActive = true
+    @State private var robotTyping = true
     @State private var speechMode = true
     @State private var userIsSpeaking = false
     @State private var emotion = ""
@@ -38,8 +38,8 @@ struct ContentView: View {
                         VStack{
                             RobotFacesView(emotion: emotion).padding(.top)
                             Spacer()
-                            RobotTypingView(isActive: $isActive, shownText: $shownText, robotSay: $robotSay, transcribeDone: $transcribeFinished)
-                            SpeechView(userIsSpeaking: $userIsSpeaking, humanSay: $humanSay, isActive: $isActive, shownText: $shownText, robotSay: $robotSay, emotion: $emotion, transcribeDone: $transcribeFinished, recording: $isRecording).padding(.bottom)
+                            RobotTypingView(robotTyping: $robotTyping, shownText: $shownText, robotSay: $robotSay, transcribeDone: $transcribeFinished)
+                            SpeechView(userIsSpeaking: $userIsSpeaking, humanSay: $humanSay, robotTyping: $robotTyping, shownText: $shownText, robotSay: $robotSay, emotion: $emotion, transcribeDone: $transcribeFinished, recording: $isRecording).padding(.bottom)
                             Spacer()
                             
                         }
@@ -48,14 +48,14 @@ struct ContentView: View {
                             VStack{
                                 RobotFacesView(emotion: emotion).padding(.top)
                                 Spacer()
-                                RobotTypingView(isActive: $isActive, shownText: $shownText, robotSay: $robotSay, transcribeDone: $transcribeFinished)
+                                RobotTypingView(robotTyping: $robotTyping, shownText: $shownText, robotSay: $robotSay, transcribeDone: $transcribeFinished)
                                 Spacer().frame(height: geo.size.height * 0.4)
                             }
                             
                             VStack{
                                 Spacer().frame(height: geo.size.height * 0.6)
                                 
-                                KeyboardView(isActive: $isActive, shownText: $shownText, robotSay: $robotSay, humanSay: $humanSay, emotion: $emotion).focused($userTyping).ignoresSafeArea(.keyboard)
+                                KeyboardView(robotTyping: $robotTyping, shownText: $shownText, robotSay: $robotSay, humanSay: $humanSay, emotion: $emotion).focused($userTyping).ignoresSafeArea(.keyboard)
                             }
                         }
                     }

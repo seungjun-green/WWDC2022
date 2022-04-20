@@ -12,7 +12,7 @@ struct SpeechView: View {
     
     @Binding var userIsSpeaking: Bool
     @Binding var humanSay: String
-    @Binding var isActive: Bool
+    @Binding var robotTyping: Bool
     @Binding var shownText: String
     @Binding var robotSay: String
     @Binding var emotion: String
@@ -25,7 +25,7 @@ struct SpeechView: View {
     
     
     var transcribing: Bool {
-        transcribedText.isEmpty && errorHappend == false && isActive
+        transcribedText.isEmpty && errorHappend == false && robotTyping
     }
 
     var body: some View {
@@ -49,7 +49,7 @@ struct SpeechView: View {
                     robotSay = Brain.generateRespond(input: humanSay)
                     Speech.speak(sentence: robotSay)
                     shownText = ""
-                    isActive = true
+                    robotTyping = true
                 } else {
                     errorHappend = false
                     transcribedText = ""
@@ -73,7 +73,7 @@ struct SpeechView: View {
                 }
             })
         }.onAppear{
-            isActive = false
+            robotTyping = false
         }
     }
     

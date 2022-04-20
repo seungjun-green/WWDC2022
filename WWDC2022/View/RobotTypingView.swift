@@ -13,7 +13,7 @@ struct RobotTypingView: View {
     @State private var timer2 = Timer.publish(every: 0.5, on: .current, in: .common).autoconnect()
     @State private var curr = 0
     @State private var showCursor = false
-    @Binding var isActive: Bool
+    @Binding var robotTyping: Bool
     @Binding var shownText: String
     @Binding var robotSay: String
     @Binding var transcribeDone: Bool
@@ -36,13 +36,13 @@ struct RobotTypingView: View {
                 Spacer()
             }.foregroundColor(Color.green)
                 .onReceive(timer) { _ in
-                    if isActive && transcribeDone {
+                    if robotTyping && transcribeDone {
                         if curr < robotSay.count  {
                             shownText+=String(Array(robotSay)[curr])
                             curr+=1
                             showCursor.toggle()
                         } else {
-                            isActive = false
+                            robotTyping = false
                             curr=0
                         }
                     }

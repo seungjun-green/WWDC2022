@@ -10,7 +10,7 @@ import CoreML
 import SwiftUI
 
 struct KeyboardView: View {
-    @Binding var isActive: Bool
+    @Binding var robotTyping: Bool
     @Binding var shownText: String
     @Binding var robotSay: String
     @Binding var humanSay: String
@@ -33,7 +33,7 @@ struct KeyboardView: View {
                 Speech.speak(sentence: robotSay)
                 
                 shownText = ""
-                isActive = true
+                robotTyping = true
                 
             } label: {
                 Image(systemName: "arrow.up.circle").font(Font.largeTitle)
