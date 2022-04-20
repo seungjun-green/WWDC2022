@@ -9,7 +9,7 @@ import SwiftUI
 
 struct RobotTypingView: View {
     
-    @State private var timer = Timer.publish(every: 0.1, on: .current, in: .common).autoconnect()
+    @State private var timer = Timer.publish(every: 0.08, on: .current, in: .common).autoconnect()
     @State private var timer2 = Timer.publish(every: 0.5, on: .current, in: .common).autoconnect()
    
     @State private var showCursor = false
