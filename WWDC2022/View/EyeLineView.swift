@@ -9,23 +9,25 @@ import SwiftUI
 
 
 struct EyeLineView: View {
+    var geo: GeometryProxy
     var body: some View {
         HStack{
             Spacer()
             Spacer()
             Spacer()
-            Eye2()
+            
+            Eye2().frame(width: geo.size.height * 0.1, height: geo.size.height * 0.1)
             
             Spacer()
             Spacer()
             
-            Eye2()
+            Eye2().frame(width: geo.size.height * 0.1, height: geo.size.height * 0.1)
             
             
             Spacer()
             Spacer()
             Spacer()
-        }.frame(height: 62)
+        }
     }
 }
 
@@ -34,7 +36,6 @@ struct EyeLineView: View {
 struct NormallEye: View {
     var body: some View {
         Circle().stroke(style: StrokeStyle(lineWidth: 2, lineCap: .square,  dash: [4], dashPhase:2))
-            .frame(width: 50, height: 50)
             .foregroundColor(Color.blue)
             .glow(color: .blue, radius: 12)
     }
@@ -45,8 +46,7 @@ struct NormallEye: View {
 struct Eye2: View {
     var body: some View {
         Circle().stroke(style: StrokeStyle(lineWidth: 2, lineCap: .square,  dash: [4], dashPhase:2))
-            .frame(width: 57, height: 57)
-            .foregroundColor(Color.blue)
+            .foregroundColor(Color.green)
             .glow(color: .blue, radius: 12)
     }
 }
