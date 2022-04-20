@@ -167,8 +167,6 @@ struct NeturalFace: View {
 }
 
 
-
-
 struct MSpacer: View {
     var count: Int
     var body: some View {

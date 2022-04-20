@@ -17,7 +17,7 @@ import AVFoundation
 
 struct ContentView: View {
     
-    @State private var humanSay = "Hi"
+    @State private var humanSay = ""
     @State private var robotSay = ""
     @State private var shownText = ""
     @State private var robotTyping = true

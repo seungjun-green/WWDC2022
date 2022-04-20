@@ -84,19 +84,20 @@ struct SpeechView: View {
             let request = SFSpeechURLRecognitionRequest(url: url)
             
             recognizer?.recognitionTask(with: request) { (result, error) in
+                
                 guard let result = result else {
                     print("some error happend")
                     humanSay = ""
                     errorHappend = true
                     return
                 }
+                
                 if result.isFinal {
-                    print(result.bestTranscription.formattedString)
                     transcribedText = result.bestTranscription.formattedString
                     humanSay = transcribedText
                     transcribeDone = true
-                    print(humanSay)
                 }
+                
             }
         }
     
