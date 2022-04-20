@@ -46,6 +46,10 @@ struct RobotTypingView: View {
                             curr=0
                         }
                     }
+                    
+                    if !transcribeDone {
+                        curr = 0
+                    }
                 }.onReceive(timer2) { _ in
                     showCursor.toggle()
                 }.font(Font.title)
