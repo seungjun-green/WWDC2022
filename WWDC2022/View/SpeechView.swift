@@ -36,6 +36,7 @@ struct SpeechView: View {
                 } else {
                     Text(transcribedText).onAppear{
                         transcribeDone = true
+                        Speech.speak(sentence: robotSay)
                     }
                 }
             }
@@ -47,7 +48,7 @@ struct SpeechView: View {
                     //generate respond
                     emotion = Brain.getEmotion(input: humanSay)
                     robotSay = Brain.generateRespond(input: humanSay)
-                    Speech.speak(sentence: robotSay)
+                    
                     shownText = ""
                     robotTyping = true
                 } else {
