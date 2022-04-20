@@ -13,7 +13,7 @@ class Speech {
     static func speak(sentence: String) {
         let utterance = AVSpeechUtterance(string: sentence)
         utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
-        utterance.rate = 0.5
+        utterance.rate = 0.4
         let synthesizer = AVSpeechSynthesizer()
         synthesizer.speak(utterance)
     }
@@ -23,10 +23,8 @@ class Speech {
                 if authStatus == .authorized {
                     print("Thanks")
                 } else {
-                    print("Speech Failed")
+                    print("Okay...")
                 }
             }
         }
-    
-   
 }

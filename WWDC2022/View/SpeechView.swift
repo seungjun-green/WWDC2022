@@ -31,7 +31,7 @@ struct SpeechView: View {
     var body: some View {
         VStack{
             TimelineView(.animation) { _ in
-                if  transcribing {
+                if transcribing {
                         ProgressView()
                 } else {
                     Text(transcribedText).onAppear{
@@ -39,7 +39,7 @@ struct SpeechView: View {
                     }
                 }
             }
-            
+                        
             Button(action: {
                 
                 if userIsSpeaking {
@@ -61,7 +61,6 @@ struct SpeechView: View {
                 userIsSpeaking.toggle()
                 
             }, label: {
-                
                 if userIsSpeaking {
                     MicAnimationView().frame(height: 110)
                 } else {
@@ -72,12 +71,12 @@ struct SpeechView: View {
                             .frame(width: 70, height: 70)
                     }.frame(height: 110)
                 }
-                
             })
         }.onAppear{
             isActive = false
         }
     }
+    
     
     func transcribeAudio(url: URL) {
             let recognizer = SFSpeechRecognizer()

@@ -28,8 +28,11 @@ struct RobotSayView: View {
     
     var body: some View {
         VStack{
-            HStack{
-                Text(shownText) + cursorView
+            HStack{     
+                    HStack{
+                        Text(shownText) + cursorView
+                    }
+                
                 Spacer()
             }.foregroundColor(Color.green)
                 .onReceive(timer) { _ in
