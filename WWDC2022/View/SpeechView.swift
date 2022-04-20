@@ -22,16 +22,17 @@ struct SpeechView: View {
     @State private var audioRecorder: AVAudioRecorder!
     @State private var transcribedText = ""
     @State private var errorHappend = false
+    
+    
+    var transcribing: Bool {
+        transcribedText.isEmpty && errorHappend == false && isActive
+    }
 
     var body: some View {
         VStack{
-            
             TimelineView(.animation) { _ in
-                if transcribedText.isEmpty && errorHappend == false{
-                    if isActive {
+                if  transcribing {
                         ProgressView()
-                    }
-                    
                 } else {
                     Text(transcribedText).onAppear{
                         transcribeDone = true
@@ -142,10 +143,6 @@ struct SpeechView: View {
             }
         }
 }
-
-
-
-
 
 
 struct MicAnimationView: View {

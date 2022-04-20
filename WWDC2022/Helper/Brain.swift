@@ -34,7 +34,7 @@ class Brain {
     static func getEmotion(input: String) -> String {
         do {
             let config = MLModelConfiguration()
-            let model = try EmotionClassifierPro(configuration: config)
+            let model = try EmotionClassifierA(configuration: config)
             let prediction = try model.prediction(text: input)
             return prediction.label
         } catch {
