@@ -15,7 +15,7 @@
 		C0DFF896280DAA9900C75B7C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C0DFF895280DAA9900C75B7C /* Assets.xcassets */; };
 		C0DFF899280DAA9900C75B7C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C0DFF898280DAA9900C75B7C /* Preview Assets.xcassets */; };
 		C0DFF8A2280DAADB00C75B7C /* RobotFaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DFF8A1280DAADB00C75B7C /* RobotFaceView.swift */; };
-		C0DFF8A4280DAAF100C75B7C /* RobotSayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DFF8A3280DAAF100C75B7C /* RobotSayView.swift */; };
+		C0DFF8A4280DAAF100C75B7C /* RobotTypingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DFF8A3280DAAF100C75B7C /* RobotTypingView.swift */; };
 		C0DFF8A6280DAB0600C75B7C /* SpeechView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DFF8A5280DAB0600C75B7C /* SpeechView.swift */; };
 		C0DFF8A8280DAB1D00C75B7C /* KeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DFF8A7280DAB1D00C75B7C /* KeyboardView.swift */; };
 		C0DFF8AE280DAB3800C75B7C /* TagClassifier1.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = C0DFF8AB280DAB3800C75B7C /* TagClassifier1.mlmodel */; };
@@ -35,7 +35,7 @@
 		C0DFF895280DAA9900C75B7C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C0DFF898280DAA9900C75B7C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		C0DFF8A1280DAADB00C75B7C /* RobotFaceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RobotFaceView.swift; sourceTree = "<group>"; };
-		C0DFF8A3280DAAF100C75B7C /* RobotSayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RobotSayView.swift; sourceTree = "<group>"; };
+		C0DFF8A3280DAAF100C75B7C /* RobotTypingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RobotTypingView.swift; sourceTree = "<group>"; };
 		C0DFF8A5280DAB0600C75B7C /* SpeechView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechView.swift; sourceTree = "<group>"; };
 		C0DFF8A7280DAB1D00C75B7C /* KeyboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardView.swift; sourceTree = "<group>"; };
 		C0DFF8AB280DAB3800C75B7C /* TagClassifier1.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = TagClassifier1.mlmodel; sourceTree = "<group>"; };
@@ -111,7 +111,7 @@
 				C0DFF8B4280DACC800C75B7C /* FaceLineView.swift */,
 				C0DFF8B6280DACED00C75B7C /* EyeLineView.swift */,
 				C0DFF8B2280DAC9100C75B7C /* MothView.swift */,
-				C0DFF8A3280DAAF100C75B7C /* RobotSayView.swift */,
+				C0DFF8A3280DAAF100C75B7C /* RobotTypingView.swift */,
 				C0DFF8A5280DAB0600C75B7C /* SpeechView.swift */,
 				C0DFF8A7280DAB1D00C75B7C /* KeyboardView.swift */,
 			);
@@ -217,7 +217,7 @@
 				C0264C56280FC34C00FEF2B0 /* EmotionClassifierA.mlmodel in Sources */,
 				C0DFF8A6280DAB0600C75B7C /* SpeechView.swift in Sources */,
 				C0264C52280F3DE100FEF2B0 /* Speech.swift in Sources */,
-				C0DFF8A4280DAAF100C75B7C /* RobotSayView.swift in Sources */,
+				C0DFF8A4280DAAF100C75B7C /* RobotTypingView.swift in Sources */,
 				C0DFF8B5280DACC800C75B7C /* FaceLineView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct RobotSayView: View {
+struct RobotTypingView: View {
     
     @State private var timer = Timer.publish(every: 0.1, on: .current, in: .common).autoconnect()
     @State private var timer2 = Timer.publish(every: 0.5, on: .current, in: .common).autoconnect()
@@ -28,7 +28,7 @@ struct RobotSayView: View {
     
     var body: some View {
         VStack{
-            HStack{     
+            HStack{
                     HStack{
                         Text(shownText) + cursorView
                     }

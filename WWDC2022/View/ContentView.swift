@@ -38,7 +38,7 @@ struct ContentView: View {
                         VStack{
                             RobotFacesView(emotion: emotion).padding(.top)
                             Spacer()
-                            RobotSayView(isActive: $isActive, shownText: $shownText, robotSay: $robotSay, transcribeDone: $transcribeFinished)
+                            RobotTypingView(isActive: $isActive, shownText: $shownText, robotSay: $robotSay, transcribeDone: $transcribeFinished)
                             SpeechView(userIsSpeaking: $userIsSpeaking, humanSay: $humanSay, isActive: $isActive, shownText: $shownText, robotSay: $robotSay, emotion: $emotion, transcribeDone: $transcribeFinished, recording: $isRecording).padding(.bottom)
                             Spacer()
                             
@@ -48,7 +48,7 @@ struct ContentView: View {
                             VStack{
                                 RobotFacesView(emotion: emotion).padding(.top)
                                 Spacer()
-                                RobotSayView(isActive: $isActive, shownText: $shownText, robotSay: $robotSay, transcribeDone: $transcribeFinished)
+                                RobotTypingView(isActive: $isActive, shownText: $shownText, robotSay: $robotSay, transcribeDone: $transcribeFinished)
                                 Spacer().frame(height: geo.size.height * 0.4)
                             }
                             
