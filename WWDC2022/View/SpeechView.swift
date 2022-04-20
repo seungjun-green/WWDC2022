@@ -43,14 +43,9 @@ struct SpeechView: View {
             Button(action: {
                 
                 if userIsSpeaking {
-                    stopRecording()
-                    //generate respond
-                    emotion = Brain.getEmotion(input: humanSay)
-                    robotSay = Brain.generateRespond(input: humanSay)
-                    
                     shownText = ""
                     robotTyping = true
-                    
+                    stopRecording()
                 } else {
                     errorHappend = false
                     transcribedText = ""
@@ -89,13 +84,22 @@ struct SpeechView: View {
                     print("some error happend")
                     humanSay = ""
                     errorHappend = true
+                    
+                    emotion = Brain.getEmotion(input: humanSay)
+                    robotSay = Brain.generateRespond(input: humanSay)
+                    
                     return
                 }
                 
                 if result.isFinal {
+                    print("====2")
                     transcribedText = result.bestTranscription.formattedString
                     humanSay = transcribedText
-                    transcribeDone = true
+                    
+                    emotion = Brain.getEmotion(input: humanSay)
+                    robotSay = Brain.generateRespond(input: humanSay)
+                    
+                    
                 }
                 
             }

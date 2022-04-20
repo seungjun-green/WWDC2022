@@ -37,6 +37,7 @@ struct ContentView: View {
         GeometryReader { geo in
             NavigationView{
                 ScrollView{
+                    
                     RobotFacesView(emotion: emotion)
                         .frame(height: geo.size.width * faceSize)
                         .padding(.top)
@@ -64,8 +65,7 @@ struct ContentView: View {
                                 userTyping = false
                             }
                         }
-                        
-                        
+                
                         ToolbarItemGroup(placement: .navigationBarTrailing) {
                             Button {
                                 if !isRecording && robotTyping == false {
@@ -83,12 +83,6 @@ struct ContentView: View {
                     }
                 
             }.preferredColorScheme(.dark)
-            
         }
-        
-        
-        
     }
-    
 }
-
