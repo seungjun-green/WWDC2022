@@ -27,7 +27,7 @@ struct ContentView: View {
     var body: some View {
         
         NavigationView{
-            VStack{
+            ScrollView{
                 RobotFacesView(emotion: emotion).padding(.top)
                 Spacer()
                 RobotTypingView(robotTyping: $robotTyping, shownText: $shownText, robotSay: $robotSay, transcribeDone: $transcribeFinished, curr: $curr)
@@ -38,6 +38,7 @@ struct ContentView: View {
                 } else {
                     KeyboardView(robotTyping: $robotTyping, shownText: $shownText, robotSay: $robotSay, humanSay: $humanSay, emotion: $emotion, curr: $curr).focused($userTyping).ignoresSafeArea(.keyboard)
                 }
+                
             }.navigationTitle("Humanoid")
                 .toolbar {
                     ToolbarItemGroup(placement: .keyboard) {
