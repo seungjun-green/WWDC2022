@@ -25,9 +25,6 @@ struct RobotFacesView: View {
     
     var body: some View {
         VStack{
-         
-            
-            
         switch robotEmotion {
         case "joy": HappyFace()
         case "anger": AngryFace()

@@ -24,54 +24,68 @@ struct ContentView: View {
     @State private var curr = 0
     @FocusState var userTyping: Bool
     
+    
+    var faceSize: Double {
+        if !speechMode && userTyping{
+            return 0.4
+        } else {
+            return 0.7
+        }
+    }
+    
     var body: some View {
-        
-        NavigationView{
-            ScrollView{
-                RobotFacesView(emotion: emotion).padding(.top)
-                Spacer()
-                RobotTypingView(robotTyping: $robotTyping, shownText: $shownText, robotSay: $robotSay, transcribeDone: $transcribeFinished, curr: $curr)
-                Spacer()
-                
-                if speechMode {
-                    SpeechView(userIsSpeaking: $userIsSpeaking, humanSay: $humanSay, robotTyping: $robotTyping, shownText: $shownText, robotSay: $robotSay, emotion: $emotion, transcribeDone: $transcribeFinished, recording: $isRecording).padding(.bottom)
-                } else {
-                    KeyboardView(robotTyping: $robotTyping, shownText: $shownText, robotSay: $robotSay, humanSay: $humanSay, emotion: $emotion, curr: $curr).focused($userTyping).ignoresSafeArea(.keyboard)
-                }
-                
-            }.navigationTitle("Humanoid")
-                .toolbar {
-                    ToolbarItemGroup(placement: .keyboard) {
-                        
-                        Button("Clear All") {
-                            humanSay = ""
-                        }
-                        
-                        Spacer()
-                        
-                        Button("Done") {
-                            userTyping = false
-                        }
-                    }
-                    
-                    
-                    ToolbarItemGroup(placement: .navigationBarTrailing) {
-                        Button {
-                            if !isRecording && robotTyping == false {
-                                speechMode.toggle()
-                            }
-                        } label: {
-                            if speechMode {
-                                Image(systemName: "mic")
-                            } else {
-                                Image(systemName: "keyboard")
-                            }
-                        }
-                        
-                    }
-                }
+        GeometryReader { geo in
             
-        }.preferredColorScheme(.dark)
+            NavigationView{
+                ScrollView{
+                    RobotFacesView(emotion: emotion)
+                        .frame(height: geo.size.width * faceSize)
+                        .padding(.top)
+                    Spacer()
+                    RobotTypingView(robotTyping: $robotTyping, shownText: $shownText, robotSay: $robotSay, transcribeDone: $transcribeFinished, curr: $curr)
+                    Spacer()
+                    
+                    if speechMode {
+                        SpeechView(userIsSpeaking: $userIsSpeaking, humanSay: $humanSay, robotTyping: $robotTyping, shownText: $shownText, robotSay: $robotSay, emotion: $emotion, transcribeDone: $transcribeFinished, recording: $isRecording).padding(.bottom)
+                    } else {
+                        KeyboardView(robotTyping: $robotTyping, shownText: $shownText, robotSay: $robotSay, humanSay: $humanSay, emotion: $emotion, curr: $curr).focused($userTyping).ignoresSafeArea(.keyboard)
+                    }
+                    
+                }.navigationTitle("Humanoid")
+                    .toolbar {
+                        ToolbarItemGroup(placement: .keyboard) {
+                            
+                            Button("Clear All") {
+                                humanSay = ""
+                            }
+                            
+                            Spacer()
+                            
+                            Button("Done") {
+                                userTyping = false
+                            }
+                        }
+                        
+                        
+                        ToolbarItemGroup(placement: .navigationBarTrailing) {
+                            Button {
+                                if !isRecording && robotTyping == false {
+                                    speechMode.toggle()
+                                }
+                            } label: {
+                                if speechMode {
+                                    Image(systemName: "mic")
+                                } else {
+                                    Image(systemName: "keyboard")
+                                }
+                            }
+                            
+                        }
+                    }
+                
+            }.preferredColorScheme(.dark)
+            
+        }
         
         
         
