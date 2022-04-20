@@ -91,7 +91,6 @@ extension Shape {
     func mouthStyling() -> some View {
         self
             .stroke(style: StrokeStyle(lineWidth: 2, lineCap: .square,  dash: [4], dashPhase: 2))
-            .frame(width: 120, height: 50)
             .foregroundColor(Color.blue)
             .glow(color: .blue, radius: 12)
     }

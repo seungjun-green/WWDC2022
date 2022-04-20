@@ -48,7 +48,7 @@ struct HappyFace: View {
                     MSpacer(count: 3)
                     EyeLineView(geo: geo)
                     MSpacer(count: 2)
-                    HappyMouth().mouthStyling()
+                    HappyMouth().mouthStyling().frame(width: geo.size.height * 0.47, height: geo.size.height * 0.195)
                     MSpacer(count: 3)
                 }
             }

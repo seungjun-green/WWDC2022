@@ -13,17 +13,13 @@ struct EyeLineView: View {
     var body: some View {
         HStack{
             Spacer()
-            Spacer()
             
             Eye2().frame(width: geo.size.height * 0.1, height: geo.size.height * 0.1)
             
             Spacer()
-            Spacer()
             
             Eye2().frame(width: geo.size.height * 0.1, height: geo.size.height * 0.1)
             
-            
-            Spacer()
             Spacer()
         }.frame(width: geo.size.height * 0.93)
     }
