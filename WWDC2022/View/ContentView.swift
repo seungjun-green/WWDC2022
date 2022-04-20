@@ -5,15 +5,10 @@
 //  Created by SeungJun Lee on 4/18/22.
 //
 
-import SwiftUI
-
-import AVKit
 import CoreML
-import NaturalLanguage
 import Speech
 import SwiftUI
 import AVFoundation
-
 
 struct ContentView: View {
     
@@ -30,40 +25,20 @@ struct ContentView: View {
     @FocusState var userTyping: Bool
     
     var body: some View {
-        GeometryReader { geo in
-            NavigationView{
+        
+        NavigationView{
+            VStack{
+                RobotFacesView(emotion: emotion).padding(.top)
+                Spacer()
+                RobotTypingView(robotTyping: $robotTyping, shownText: $shownText, robotSay: $robotSay, transcribeDone: $transcribeFinished, curr: $curr)
+                Spacer()
                 
-                VStack{
-                    if speechMode {
-                        
-                        VStack{
-                            RobotFacesView(emotion: emotion).padding(.top)
-                            Spacer()
-                            RobotTypingView(robotTyping: $robotTyping, shownText: $shownText, robotSay: $robotSay, transcribeDone: $transcribeFinished, curr: $curr)
-                            SpeechView(userIsSpeaking: $userIsSpeaking, humanSay: $humanSay, robotTyping: $robotTyping, shownText: $shownText, robotSay: $robotSay, emotion: $emotion, transcribeDone: $transcribeFinished, recording: $isRecording).padding(.bottom)
-                            Spacer()
-                            
-                        }
-                    } else {
-                        ZStack{
-                            VStack{
-                                RobotFacesView(emotion: emotion).padding(.top)
-                                Spacer()
-                                RobotTypingView(robotTyping: $robotTyping, shownText: $shownText, robotSay: $robotSay, transcribeDone: $transcribeFinished, curr: $curr)
-                                Spacer().frame(height: geo.size.height * 0.4)
-                            }
-                            
-                            VStack{
-                                Spacer().frame(height: geo.size.height * 0.6)
-                                
-                                KeyboardView(robotTyping: $robotTyping, shownText: $shownText, robotSay: $robotSay, humanSay: $humanSay, emotion: $emotion, curr: $curr).focused($userTyping).ignoresSafeArea(.keyboard)
-                            }
-                        }
-                    }
-                    
-                    
+                if speechMode {
+                    SpeechView(userIsSpeaking: $userIsSpeaking, humanSay: $humanSay, robotTyping: $robotTyping, shownText: $shownText, robotSay: $robotSay, emotion: $emotion, transcribeDone: $transcribeFinished, recording: $isRecording).padding(.bottom)
+                } else {
+                    KeyboardView(robotTyping: $robotTyping, shownText: $shownText, robotSay: $robotSay, humanSay: $humanSay, emotion: $emotion, curr: $curr).focused($userTyping).ignoresSafeArea(.keyboard)
                 }
-                .navigationTitle("Humanoid")
+            }.navigationTitle("Humanoid")
                 .toolbar {
                     ToolbarItemGroup(placement: .keyboard) {
                         
@@ -94,8 +69,12 @@ struct ContentView: View {
                         
                     }
                 }
-            }.preferredColorScheme(.dark)
-        }
+            
+        }.preferredColorScheme(.dark)
+        
+        
+        
     }
     
 }
+
