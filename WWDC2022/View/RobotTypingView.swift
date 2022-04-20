@@ -39,6 +39,9 @@ struct RobotTypingView: View {
                 .onReceive(timer) { _ in
                     if robotTyping && transcribeDone {
                         if curr < robotSay.count  {
+                            if curr == 0 {
+                                Speech.speak(sentence: robotSay)
+                            }
                             shownText+=String(Array(robotSay)[curr])
                             curr+=1
                             showCursor.toggle()

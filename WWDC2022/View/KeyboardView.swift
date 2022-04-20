@@ -32,7 +32,6 @@ struct KeyboardView: View {
             Button {
                 curr = 0
                 robotSay = Brain.generateRespond(input: humanSay)
-                Speech.speak(sentence: robotSay)
                 
                 shownText = ""
                 robotTyping = true

@@ -35,7 +35,7 @@ struct SpeechView: View {
                 } else {
                     Text(transcribedText).onAppear{
                         transcribeDone = true
-                        Speech.speak(sentence: robotSay)
+                        
                     }
                 }
             }
