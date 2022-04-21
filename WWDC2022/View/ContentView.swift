@@ -40,6 +40,7 @@ struct ContentView: View {
                 
                 ScrollView{
                     
+                    
                     RobotFacesView(emotion: emotion)
                         .frame(height: geo.size.width * faceSize)
                         .padding(.top)
