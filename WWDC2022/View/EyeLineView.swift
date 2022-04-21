@@ -94,12 +94,17 @@ struct Eye: View {
     var body: some View {
         
         VStack{
-            if emotion != "love" {
-            Circle().stroke(style: StrokeStyle(lineWidth: 2, lineCap: .square,  dash: [4], dashPhase:2))
-                .foregroundColor(Color.white)
-                .glow(color: emotionColor, radius: 12)
-            } else {
+            if emotion ==  "love" {
                 HeartEye().loveEyeStyling()
+            
+            } else if emotion == "joy" {
+                HappyEye().stroke(style: StrokeStyle(lineWidth: 2, lineCap: .square,  dash: [4], dashPhase:2))
+                    .foregroundColor(Color.white)
+                    .glow(color: emotionColor, radius: 12)
+            } else {
+                Circle().stroke(style: StrokeStyle(lineWidth: 2, lineCap: .square,  dash: [4], dashPhase:2))
+                    .foregroundColor(Color.white)
+                    .glow(color: emotionColor, radius: 12)
             }
         }
     }
@@ -147,6 +152,15 @@ struct AngryEyeBrow2: Shape {
         Path { path in
             path.move(to: CGPoint(x: rect.size.width, y:0))
             path.addLine(to: CGPoint(x: 0, y: rect.size.height))
+        }
+    }
+}
+
+struct HappyEye: Shape {
+    func path(in rect: CGRect) -> Path {
+        Path { path in
+            path.move(to: CGPoint(x: 0, y: rect.size.height))
+            path.addQuadCurve(to: CGPoint(x: rect.size.width, y: rect.size.height), control: CGPoint(x: rect.size.width/2, y: rect.size.height*0.3))
         }
     }
 }

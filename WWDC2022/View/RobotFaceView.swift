@@ -199,8 +199,6 @@ struct MSpacer: View {
     }
 }
 
-
-;
 /*
  
  
