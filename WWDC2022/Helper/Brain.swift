@@ -17,27 +17,37 @@ class Brain {
     
     static func generateRespond(input: String) -> String {
         let processedString = input.trimmingCharacters(in: .whitespacesAndNewlines)
-        // first process the users inout
-        if processedString.starts(with: "Remember that") {
-            if processedString.count == "Remember that".count {
-                return "Remember what?, Could you say that again?"
-            } else {
-                return "Ok, I'll remember that from now on"
-            }
-            // fuckig lots  of work
-            
-           // we need to process the data and create a json FI
-        } else if processedString == "" {
+        
+        if processedString == "" {
             return "U gotta say something"
         } else {
-            do {
-                let config = MLModelConfiguration()
-                let model = try TagClassifier1(configuration: config)
-                let prediction = try model.prediction(text: processedString)
-                return Brain.get_response(label: prediction.label)
-            } catch {
-                print("Some error happend")
-                return "Unexpected error happend, Could you try again?"
+            if processedString.starts(with: "Remember that") {
+                if processedString.count == "Remember that".count {
+                    return "Remember what?, Could you say that again?"
+                } else {
+                    // do proecess of saving
+                    return "Ok, I'll remember that from now on"
+                }
+            } else {
+                // check if input say is in question list
+                let inData = [true, false].randomElement() ?? true
+                if inData {
+                    // if it is get the answer
+                    let answer = "1234"
+                    // then return the answer
+                    return answer
+                } else {
+                    do {
+                        let config = MLModelConfiguration()
+                        let model = try TagClassifier1(configuration: config)
+                        let prediction = try model.prediction(text: processedString)
+                        return Brain.get_response(label: prediction.label)
+                    } catch {
+                        print("Some error happend")
+                        return "Unexpected error happend, Could you try again?"
+                    }
+                }
+                
             }
         }
     }
@@ -65,4 +75,9 @@ class Brain {
  */
 
 
-
+/*
+ 
+ if inpu
+ 
+ 
+ */
