@@ -21,7 +21,7 @@ struct RobotFacesView: View {
 //        "surprise"
 //    }
     
-    var colors = ["joy", "anger", "fear", "love", "surprise", "sadness"]
+    var colors = ["netural","joy", "anger", "fear", "love", "surprise", "sadness"]
     @State private var robotEmotion = "joy"
     
     var body: some View {
@@ -52,11 +52,11 @@ struct HappyFace: View {
             ZStack{
                 FaceLineView(emotion: "joy")
                 VStack{
-                    MSpacer(count: 3)
-                    EyeLineView(geo: geo, emotion: "joy")
                     MSpacer(count: 2)
-                    HappyMouth().mouthStyling(color: Color.white).frame(width: geo.size.height * 0.47, height: geo.size.height * 0.195)
-                    MSpacer(count: 3)
+                    EyeLineView(geo: geo, emotion: "joy")
+                    MSpacer(count: 1)
+                    HappyMouth().mouthStyling(color: Color.white).frame(width: geo.size.height * 0.55, height: geo.size.height * 0.225)
+                    MSpacer(count: 4)
                 }
             }
         }

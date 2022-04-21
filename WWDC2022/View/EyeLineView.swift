@@ -15,6 +15,8 @@ struct EyeLineView: View {
     var eyeSize: Double {
         if emotion == "love" {
             return 2.0
+        } else if emotion == "joy" {
+            return 1.5
         } else {
             return 1.0
         }
@@ -186,9 +188,9 @@ extension Shape {
 
 
 /*
+ add netural to the piceker
  
- happy eye for joy face
- blue effect for motuh when emotion is fear
+and
+ 
+ for the last work on happy mouth
  */
-
-
