@@ -89,11 +89,11 @@ struct FearMouth: Shape {
 }
 
 extension Shape {
-    func mouthStyling() -> some View {
+    func mouthStyling(color: Color) -> some View {
         self
             .stroke(style: StrokeStyle(lineWidth: 2, lineCap: .square,  dash: [4], dashPhase: 2))
-            .foregroundColor(Color.white)
-            .glow(color: .white, radius: 12)
+            .foregroundColor(color)
+            .glow(color: color, radius: 12)
     }
 }
 

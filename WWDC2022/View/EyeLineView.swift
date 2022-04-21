@@ -36,7 +36,7 @@ struct EyeLineView: View {
                 }
             } else if emotion == "anger" {
                 VStack(spacing: geo.size.height * 0.01){
-                    AngryEyeBrow().mouthStyling().frame(width: geo.size.height * 0.12 * eyeSize, height: geo.size.height * 0.03 * eyeSize)
+                    AngryEyeBrow().mouthStyling(color: Color.white).frame(width: geo.size.height * 0.12 * eyeSize, height: geo.size.height * 0.03 * eyeSize)
                     
                     Eye(emotion: emotion).frame(width: geo.size.height * 0.1 * eyeSize, height: geo.size.height * 0.1 * eyeSize)
                 }
@@ -53,7 +53,7 @@ struct EyeLineView: View {
             
             if emotion == "anger" {
                 VStack(spacing: geo.size.height * 0.01){
-                    AngryEyeBrow2().mouthStyling().frame(width: geo.size.height * 0.12 * eyeSize, height: geo.size.height * 0.03 * eyeSize)
+                    AngryEyeBrow2().mouthStyling(color: Color.white).frame(width: geo.size.height * 0.12 * eyeSize, height: geo.size.height * 0.03 * eyeSize)
                     
                     Eye(emotion: emotion).frame(width: geo.size.height * 0.1 * eyeSize, height: geo.size.height * 0.1 * eyeSize)
                 }
@@ -173,8 +173,8 @@ extension Shape {
 
 /*
  
- angry eye brow and ad taht to the abgry face
  happy eye for joy face
+ blue effect for motuh when emotion is fear
  */
 
 

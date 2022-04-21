@@ -55,7 +55,7 @@ struct HappyFace: View {
                     MSpacer(count: 3)
                     EyeLineView(geo: geo, emotion: "joy")
                     MSpacer(count: 2)
-                    HappyMouth().mouthStyling().frame(width: geo.size.height * 0.47, height: geo.size.height * 0.195)
+                    HappyMouth().mouthStyling(color: Color.white).frame(width: geo.size.height * 0.47, height: geo.size.height * 0.195)
                     MSpacer(count: 3)
                 }
             }
@@ -75,7 +75,7 @@ struct AngryFace: View {
                     MSpacer(count: 3)
                     EyeLineView(geo: geo, emotion: "anger")
                     MSpacer(count: 2)
-                    AngryMouth().mouthStyling().frame(width: geo.size.height * 0.47, height: geo.size.height * 0.195)
+                    AngryMouth().mouthStyling(color: Color.white).frame(width: geo.size.height * 0.47, height: geo.size.height * 0.195)
                     MSpacer(count: 3)
                 }
             }
@@ -96,7 +96,7 @@ struct FearFace: View {
                     MSpacer(count: 3)
                     EyeLineView(geo: geo, emotion: "fear")
                     MSpacer(count: 2)
-                    FearMouth().mouthStyling().frame(width: geo.size.height * 0.47, height: geo.size.height * 0.195)
+                    FearMouth().mouthStyling(color: Color.blue).frame(width: geo.size.height * 0.47, height: geo.size.height * 0.195)
                     MSpacer(count: 3)
                 }
             }
@@ -117,7 +117,7 @@ struct LoveFace: View {
                     MSpacer(count: 3)
                     EyeLineView(geo: geo, emotion: "love")
                     MSpacer(count: 2)
-                    LoveMouth().mouthStyling().frame(width: geo.size.height * 0.47, height: geo.size.height * 0.195)
+                    LoveMouth().mouthStyling(color: Color.white).frame(width: geo.size.height * 0.47, height: geo.size.height * 0.195)
                     MSpacer(count: 3)
                 }
             }
@@ -159,7 +159,7 @@ struct SadFace: View {
                     MSpacer(count: 3)
                     EyeLineView(geo: geo, emotion: "sadness")
                     MSpacer(count: 2)
-                    SadMouth().mouthStyling().frame(width: geo.size.height * 0.47, height: geo.size.height * 0.195)
+                    SadMouth().mouthStyling(color: Color.white).frame(width: geo.size.height * 0.47, height: geo.size.height * 0.195)
                     MSpacer(count: 3)
                 }
             }
@@ -181,7 +181,7 @@ struct NeturalFace: View {
                     MSpacer(count: 3)
                     EyeLineView(geo: geo, emotion: "netural")
                     MSpacer(count: 2)
-                    NeturalMouth().mouthStyling().frame(width: geo.size.height * 0.47, height: geo.size.height * 0.195)
+                    NeturalMouth().mouthStyling(color: Color.white).frame(width: geo.size.height * 0.47, height: geo.size.height * 0.195)
                     MSpacer(count: 3)
                 }
             }
