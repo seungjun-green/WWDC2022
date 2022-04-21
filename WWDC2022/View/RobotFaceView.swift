@@ -14,25 +14,34 @@ struct RobotFacesView: View {
     
     
     
-    var robotEmotion: String {
-//        if emotion.isEmpty || emotion == "neatural" {
-//            return "netural"
-//        } else {
-//            return emotion
-//        }
-        "surprise"
-    }
+//    var robotEmotion: String {
+////        if emotion.isEmpty || emotion == "neatural" {
+////            return "netural"
+////        } else {
+////            return emotion
+////        }
+//        "surprise"
+//    }
+    
+    var colors = ["joy", "anger", "fear", "love", "surprise", "sadness"]
+    @State private var robotEmotion = "joy"
     
     var body: some View {
+        Picker("Please choose a color", selection: $robotEmotion) {
+                                    ForEach(colors, id: \.self) {
+                                        Text($0)
+                                    }
+                    }.pickerStyle(.segmented)
+        
         VStack{
         switch robotEmotion {
         case "joy": HappyFace()
-//        case "anger": AngryFace()
-//        case "fear": FearFace()
-//        case "love": LoveFace()
-//        case "surprise": SurpriseFace()
-//        case "sadness": SadFace()
-        default: HappyFace()
+        case "anger": AngryFace()
+        case "fear": FearFace()
+        case "love": LoveFace()
+        case "surprise": SurpriseFace()
+        case "sadness": SadFace()
+        default: NeturalFace()
         }
     }
     }
@@ -43,10 +52,10 @@ struct HappyFace: View {
     var body: some View {
         GeometryReader { geo in
             ZStack{
-                FaceLineView()
+                FaceLineView(emotion: "joy")
                 VStack{
                     MSpacer(count: 3)
-                    EyeLineView(geo: geo)
+                    EyeLineView(geo: geo, emotion: "joy")
                     MSpacer(count: 2)
                     HappyMouth().mouthStyling().frame(width: geo.size.height * 0.47, height: geo.size.height * 0.195)
                     MSpacer(count: 3)
@@ -62,13 +71,14 @@ struct AngryFace: View {
         GeometryReader { geo in
             ZStack{
 
-                FaceLineView()
+                FaceLineView(emotion: "anger")
 
                 VStack{
-                    Spacer()
-                    EyeLineView(geo: geo)
+                    MSpacer(count: 3)
+                    EyeLineView(geo: geo, emotion: "anger")
+                    MSpacer(count: 2)
                     AngryMouth().mouthStyling().frame(width: geo.size.height * 0.47, height: geo.size.height * 0.195)
-                    Spacer()
+                    MSpacer(count: 3)
                 }
             }
 
@@ -82,13 +92,14 @@ struct FearFace: View {
         GeometryReader {geo in
             ZStack{
 
-                FaceLineView()
+                FaceLineView(emotion: "fear")
 
                 VStack{
-                    Spacer()
-                    EyeLineView(geo: geo)
+                    MSpacer(count: 3)
+                    EyeLineView(geo: geo, emotion: "fear")
+                    MSpacer(count: 2)
                     FearMouth().mouthStyling().frame(width: geo.size.height * 0.47, height: geo.size.height * 0.195)
-                    Spacer()
+                    MSpacer(count: 3)
                 }
             }
         }
@@ -102,13 +113,14 @@ struct LoveFace: View {
         GeometryReader {geo in
             ZStack{
 
-                FaceLineView()
+                FaceLineView(emotion: "love")
 
                 VStack{
-                    Spacer()
-                    EyeLineView(geo: geo)
+                    MSpacer(count: 3)
+                    EyeLineView(geo: geo, emotion: "love")
+                    MSpacer(count: 2)
                     LoveMouth().mouthStyling().frame(width: geo.size.height * 0.47, height: geo.size.height * 0.195)
-                    Spacer()
+                    MSpacer(count: 3)
                 }
             }
         }
@@ -122,13 +134,14 @@ struct SurpriseFace: View {
         GeometryReader {geo in
             ZStack{
 
-                FaceLineView()
+                FaceLineView(emotion: "surprise")
 
                 VStack{
-                    Spacer()
-                    EyeLineView(geo: geo)
-                    SurprisedMouth().frame(width: geo.size.height * 0.47, height: geo.size.height * 0.195)
-                    Spacer()
+                    MSpacer(count: 3)
+                    EyeLineView(geo: geo, emotion: "surprise")
+                    MSpacer(count: 2)
+                    SurprisedMouth(geo: geo).frame(width: geo.size.height * 0.47, height: geo.size.height * 0.195)
+                    MSpacer(count: 3)
                 }
             }
 
@@ -142,13 +155,14 @@ struct SadFace: View {
         GeometryReader{geo in
             ZStack{
 
-                FaceLineView()
+                FaceLineView(emotion: "sadness")
 
                 VStack{
-                    Spacer()
-                    EyeLineView(geo: geo)
+                    MSpacer(count: 3)
+                    EyeLineView(geo: geo, emotion: "sadness")
+                    MSpacer(count: 2)
                     SadMouth().mouthStyling().frame(width: geo.size.height * 0.47, height: geo.size.height * 0.195)
-                    Spacer()
+                    MSpacer(count: 3)
                 }
             }
         }
@@ -156,22 +170,24 @@ struct SadFace: View {
     }
 }
 
+
+
 struct NeturalFace: View {
     var body: some View {
         GeometryReader {geo in
             ZStack{
 
-                FaceLineView()
+                FaceLineView(emotion: "netural")
 
                 VStack{
-                    Spacer()
-                    EyeLineView(geo: geo)
+                    MSpacer(count: 3)
+                    EyeLineView(geo: geo, emotion: "netural")
+                    MSpacer(count: 2)
                     NeturalMouth().mouthStyling().frame(width: geo.size.height * 0.47, height: geo.size.height * 0.195)
-                    Spacer()
+                    MSpacer(count: 3)
                 }
             }
         }
-        
     }
 }
 
@@ -184,3 +200,16 @@ struct MSpacer: View {
         }
     }
 }
+
+
+;
+/*
+ 
+ 
+ Faceline
+ 
+ anger -> red
+ others -> yellow
+ 
+ 
+ */

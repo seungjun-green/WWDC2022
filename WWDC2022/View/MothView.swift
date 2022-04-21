@@ -55,11 +55,12 @@ struct AngryMouth: Shape {
 }
 
 struct SurprisedMouth: View {
+    var geo: GeometryProxy
     var body: some View {
         Circle().stroke(style: StrokeStyle(lineWidth: 2, lineCap: .square,  dash: [4], dashPhase:2))
-            .frame(width: 80, height: 80)
-            .foregroundColor(Color.blue)
-            .glow(color: .blue, radius: 12)
+            .frame(width: geo.size.height * 0.4, height: geo.size.height * 0.4)
+            .foregroundColor(Color.white)
+            .glow(color: .white, radius: 12)
     }
     
 }
@@ -91,8 +92,8 @@ extension Shape {
     func mouthStyling() -> some View {
         self
             .stroke(style: StrokeStyle(lineWidth: 2, lineCap: .square,  dash: [4], dashPhase: 2))
-            .foregroundColor(Color.blue)
-            .glow(color: .blue, radius: 12)
+            .foregroundColor(Color.white)
+            .glow(color: .white, radius: 12)
     }
 }
 

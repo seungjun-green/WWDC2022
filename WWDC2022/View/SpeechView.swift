@@ -92,7 +92,6 @@ struct SpeechView: View {
                 }
                 
                 if result.isFinal {
-                    print("====2")
                     transcribedText = result.bestTranscription.formattedString
                     humanSay = transcribedText
                     
