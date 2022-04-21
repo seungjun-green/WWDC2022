@@ -7,7 +7,6 @@
 
 import SwiftUI
 
-// DONE
 struct HappyMouth: Shape {
     func path(in rect: CGRect) -> Path {
         Path { path in

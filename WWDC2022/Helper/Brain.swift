@@ -16,13 +16,24 @@ class Brain {
     }
     
     static func generateRespond(input: String) -> String {
-        if input == "" {
+        let processedString = input.trimmingCharacters(in: .whitespacesAndNewlines)
+        // first process the users inout
+        if processedString.starts(with: "Remember that") {
+            if processedString.count == "Remember that".count {
+                return "Remember what?, Could you say that again?"
+            } else {
+                return "Ok, I'll remember that from now on"
+            }
+            // fuckig lots  of work
+            
+           // we need to process the data and create a json FI
+        } else if processedString == "" {
             return "U gotta say something"
         } else {
             do {
                 let config = MLModelConfiguration()
                 let model = try TagClassifier1(configuration: config)
-                let prediction = try model.prediction(text: input)
+                let prediction = try model.prediction(text: processedString)
                 return Brain.get_response(label: prediction.label)
             } catch {
                 print("Some error happend")
@@ -43,3 +54,15 @@ class Brain {
         }
     }
 }
+
+
+
+/*
+ 
+ question: My password for bycle is 1234
+ answer: 1234
+ 
+ */
+
+
+
