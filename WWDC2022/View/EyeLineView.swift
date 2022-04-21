@@ -19,6 +19,7 @@ struct EyeLineView: View {
             return 1.0
         }
     }
+    
     var body: some View {
         HStack{
             Spacer()
