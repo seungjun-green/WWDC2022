@@ -28,3 +28,11 @@ class DataR {
     ]
     
 }
+
+
+
+class DataQ {
+    static var question = [
+        "My name is Seungjun": "Seungjun"
+    ]
+}

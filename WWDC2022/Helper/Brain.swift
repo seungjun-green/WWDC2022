@@ -81,3 +81,15 @@ class Brain {
  
  
  */
+
+//*
+
+
+
+/*
+ 
+ 
+ 1. cut the string from remember that
+ 2. using the natural langauge, do some processeessment of getting the answer from the string
+ 3.
+ */
