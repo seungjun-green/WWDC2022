@@ -11,15 +11,23 @@ import SwiftUI
 struct EyeLineView: View {
     var geo: GeometryProxy
     var emotion: String
+    
+    var eyeSize: Double {
+        if emotion == "love" {
+            return 2.0
+        } else {
+            return 1.0
+        }
+    }
     var body: some View {
         HStack{
             Spacer()
             
-            Eye(emotion: emotion).frame(width: geo.size.height * 0.1, height: geo.size.height * 0.1)
+            Eye(emotion: emotion).frame(width: geo.size.height * 0.1 * eyeSize, height: geo.size.height * 0.1 * eyeSize)
             
             Spacer()
             
-            Eye(emotion: emotion).frame(width: geo.size.height * 0.1, height: geo.size.height * 0.1)
+            Eye(emotion: emotion).frame(width: geo.size.height * 0.1 * eyeSize, height: geo.size.height * 0.1 * eyeSize)
             
             Spacer()
         }.frame(width: geo.size.height * 0.93)
