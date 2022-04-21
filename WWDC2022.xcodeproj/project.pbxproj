@@ -10,6 +10,7 @@
 		C0264C52280F3DE100FEF2B0 /* Speech.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0264C51280F3DE100FEF2B0 /* Speech.swift */; };
 		C0264C54280F3DEC00FEF2B0 /* Brain.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0264C53280F3DEC00FEF2B0 /* Brain.swift */; };
 		C0264C56280FC34C00FEF2B0 /* EmotionClassifierA.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = C0264C55280FC34C00FEF2B0 /* EmotionClassifierA.mlmodel */; };
+		C075E8D62811EAA000443264 /* TagClassifier2.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = C075E8D52811EAA000443264 /* TagClassifier2.mlmodel */; };
 		C0DFF892280DAA9700C75B7C /* WWDC2022App.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DFF891280DAA9700C75B7C /* WWDC2022App.swift */; };
 		C0DFF894280DAA9700C75B7C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DFF893280DAA9700C75B7C /* ContentView.swift */; };
 		C0DFF896280DAA9900C75B7C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C0DFF895280DAA9900C75B7C /* Assets.xcassets */; };
@@ -29,6 +30,7 @@
 		C0264C51280F3DE100FEF2B0 /* Speech.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Speech.swift; sourceTree = "<group>"; };
 		C0264C53280F3DEC00FEF2B0 /* Brain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Brain.swift; sourceTree = "<group>"; };
 		C0264C55280FC34C00FEF2B0 /* EmotionClassifierA.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = EmotionClassifierA.mlmodel; sourceTree = "<group>"; };
+		C075E8D52811EAA000443264 /* TagClassifier2.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = TagClassifier2.mlmodel; sourceTree = "<group>"; };
 		C0DFF88E280DAA9700C75B7C /* WWDC2022.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WWDC2022.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0DFF891280DAA9700C75B7C /* WWDC2022App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WWDC2022App.swift; sourceTree = "<group>"; };
 		C0DFF893280DAA9700C75B7C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -122,6 +124,7 @@
 			isa = PBXGroup;
 			children = (
 				C0264C55280FC34C00FEF2B0 /* EmotionClassifierA.mlmodel */,
+				C075E8D52811EAA000443264 /* TagClassifier2.mlmodel */,
 				C0DFF8AB280DAB3800C75B7C /* TagClassifier1.mlmodel */,
 			);
 			path = "ml models";
@@ -212,6 +215,7 @@
 				C0DFF8B3280DAC9100C75B7C /* MothView.swift in Sources */,
 				C0DFF8B7280DACED00C75B7C /* EyeLineView.swift in Sources */,
 				C0DFF894280DAA9700C75B7C /* ContentView.swift in Sources */,
+				C075E8D62811EAA000443264 /* TagClassifier2.mlmodel in Sources */,
 				C0DFF892280DAA9700C75B7C /* WWDC2022App.swift in Sources */,
 				C0DFF8A8280DAB1D00C75B7C /* KeyboardView.swift in Sources */,
 				C0264C56280FC34C00FEF2B0 /* EmotionClassifierA.mlmodel in Sources */,

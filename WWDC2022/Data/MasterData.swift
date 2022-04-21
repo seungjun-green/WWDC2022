@@ -27,13 +27,14 @@ class DataR {
         ],
         "weather": [
             "patterns": ["weather?","What is the current weather like?", "What's the weather like right now?", "Is it raining outside?", "What's the temperature right now?"],
-            "responses": ["Sorry, I also don't know what time it is", "Hmm, I guess time for snacks?"]
+            "responses": ["It could be hot or cold depending where you live :)"]
         ],
         "age": [
             "patterns": ["How old are you?","What is your age?", "I would like to know your age.", "Could you tell me your age?", "May I ask your age?", "Can I ask how old you are?"],
             "responses": ["I'm 1 month old", "I stopped counting my age from some point of my life"]
         ]
     ]
+    
 }
 
 

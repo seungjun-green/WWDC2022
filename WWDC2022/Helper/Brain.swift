@@ -67,7 +67,7 @@ class Brain {
                     /// human was just chlling out, no problem :)
                     do {
                         let config = MLModelConfiguration()
-                        let model = try TagClassifier1(configuration: config)
+                        let model = try TagClassifier2(configuration: config)
                         let prediction = try model.prediction(text: processedString)
                         return Brain.get_response(label: prediction.label)
                     } catch {
