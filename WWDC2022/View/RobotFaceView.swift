@@ -11,9 +11,7 @@ import SwiftUI
 
 struct RobotFacesView: View {
     var emotion: String
-    
-    
-    
+        
 //    var robotEmotion: String {
 ////        if emotion.isEmpty || emotion == "neatural" {
 ////            return "netural"
