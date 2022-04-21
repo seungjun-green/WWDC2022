@@ -37,13 +37,13 @@ class Brain {
                     return "Ok, I'll remember that from now on"
                 }
             } else {
-                // check if input say is in question list
                 
-                    // if it is get the answer
+                // check if input say is in question list
                     let questions = DataQ.question.keys
                     for curr_q in questions {
-                        if getSimilarity(str1: processedString, str2: curr_q) >= 0.75 {
-                            return DataQ.question[processedString] ?? "I don't know"
+                        print("------------", getSimilarity(str1: processedString, str2: curr_q))
+                        if getSimilarity(str1: processedString, str2: curr_q) >= 0.7 {
+                            return DataQ.question[curr_q] ?? "I don't know"
                         }
                         break
                     }
