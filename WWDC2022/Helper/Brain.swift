@@ -22,7 +22,7 @@ class Brain {
             /// if human said nothing
             return "U gotta say something"
         } else {
-            if processedString.starts(with: "Remember that") || processedString.starts(with: "Remember") {
+            if processedString.starts(with: "Remember that") {
                 /// time to remember something
                 if processedString.count == "Remember that".count {
                     /// human only said remember that
@@ -31,25 +31,35 @@ class Brain {
                     /// human correctly used remember that phrase
                     
                     // from given input , fet the question and asnwer
-                    let question = "What is my name"
-                    let answer = "1234"
+                    let theQandA = Language.getQandA(input: processedString)
+                    
+                    let question = theQandA[0]
+                    let answer = theQandA[1]
+                    
                                         
+                    print("the question is \(question) and answer is \(answer)")
+                    
                     let questions = DataQ.question.keys
                     // if similar question already exist in the question list, then replace that one with a new answer
                     for curr_q in questions {
-                        print("hahahahaahahah")
                         if getSimilarity(str1: question, str2: curr_q) >= 0.9 {
                             print(">>>>>>", getSimilarity(str1: question, str2: curr_q))
-                            DataQ.question[curr_q] = "answer"
-                            return "Ok, I'll remember that from now on"
+                            DataQ.question[curr_q] = answer
+                            return "Ok, I'll remember that from now on2"
                         }
                         break
                     }
                     
                     // if similar question does not exist, just add one more thing to rememeber
                     DataQ.question[question] = answer
+                    print("=======")
+                    print("=======")
+                    print("=======")
                     print(DataQ.question)
-                    return "Ok, I'll remember that from now on"
+                    print("=======")
+                    print("=======")
+                    print("=======")
+                    return "Ok, I'll remember that from now on1"
                 }
             } else {
                 print("Whattttt????---")
@@ -58,6 +68,7 @@ class Brain {
                 // check if input say is in question list
                     let questions = DataQ.question.keys
                     for curr_q in questions {
+                        print(getSimilarity(str1: processedString, str2: curr_q), curr_q)
                         if getSimilarity(str1: processedString, str2: curr_q) >= 0.7 {
                             return DataQ.question[curr_q] ?? "I don't know"
                         }
@@ -116,29 +127,53 @@ class Brain {
 
 
 
-/*
- 
- question: My password for bycle is 1234
- answer: 1234
- 
- */
+class Language {
+    static func retrievePOS(from text: String) -> [String] {
+        let tagger = NLTagger(tagSchemes: [.lexicalClass])
+        tagger.string = text
+        
+        var tags = [String]()
+        let options: NLTagger.Options = [.omitPunctuation, .omitWhitespace, .joinContractions, .joinNames]
+        tagger.enumerateTags(in: text.startIndex..<text.endIndex, unit: .word, scheme: .lexicalClass, options: options) { (tag, tokenRange) -> Bool in
+            if let tag = tag {
+                tags.append(tag.rawValue)
+            }
+            return true
+        }
+        return tags
+    }
+    
+    
+    static func getQandA(input: String) -> [String] {
+        
+        let text = input
+        let tokenizer = NLTokenizer(unit: .word)
+        tokenizer.string = text
+
+        var curr_data = [String]()
+
+        tokenizer.enumerateTokens(in: text.startIndex..<text.endIndex) { tokenRange, _ in
+            curr_data.append(String(text[tokenRange]))
+            return true
+        }
 
 
-/*
- 
- if inpu
- 
- 
- */
 
-//*
+        let tags = retrievePOS(from: text)
+        var pivot = 0
 
+        for (index, tag) in tags.enumerated() {
+            if String(tag) == "Verb" && index != 0{
+                pivot = index
+                break
+            }
+        }
 
-
-/*
- 
- 
- 1. cut the string from remember that
- 2. using the natural langauge, do some processeessment of getting the answer from the string
- 3.
- */
+        let question = curr_data.prefix(upTo: pivot+1).joined(separator: " ")
+        let answer = curr_data.suffix(from:pivot+1).joined(separator: " ")
+        
+        return [question, answer]
+    }
+    
+    
+}
