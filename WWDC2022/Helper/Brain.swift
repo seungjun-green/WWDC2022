@@ -115,15 +115,13 @@ class Brain {
 
 }
 
-
-
 class Language {
     static func getLexicalClass(text: String) -> [String] {
         let tagger = NLTagger(tagSchemes: [.lexicalClass])
         tagger.string = text
         
         var tags = [String]()
-        let options: NLTagger.Options = [.omitPunctuation, .omitWhitespace, .joinContractions, .joinNames]
+        let options: NLTagger.Options = [.omitPunctuation, .omitWhitespace]
         tagger.enumerateTags(in: text.startIndex..<text.endIndex, unit: .word, scheme: .lexicalClass, options: options) { (tag, tokenRange) -> Bool in
             if let tag = tag {
                 tags.append(tag.rawValue)
@@ -132,7 +130,6 @@ class Language {
         }
         return tags
     }
-    
     
     static func getQandA(input: String) -> [String] {
         
