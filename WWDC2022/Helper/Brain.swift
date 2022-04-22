@@ -25,7 +25,7 @@ class Brain {
             if processedString.starts(with: "Remember that") {
                 /// time to remember something
                 if processedString.count == "Remember that".count {
-                    /// human only said remember that
+                    /// human only said 'remember that'
                     return "Remember what?, Could you say that again?"
                 } else {
                     /// human correctly used remember that phrase
@@ -52,13 +52,6 @@ class Brain {
                     
                     // if similar question does not exist, just add one more thing to rememeber
                     DataQ.question[question] = answer
-                    print("=======")
-                    print("=======")
-                    print("=======")
-                    print(DataQ.question)
-                    print("=======")
-                    print("=======")
-                    print("=======")
                     return "Ok, I'll remember that from now on1"
                 }
             } else {
@@ -125,7 +118,7 @@ class Brain {
 
 
 class Language {
-    static func retrievePOS(from text: String) -> [String] {
+    static func getLexicalClass(text: String) -> [String] {
         let tagger = NLTagger(tagSchemes: [.lexicalClass])
         tagger.string = text
         
@@ -154,7 +147,7 @@ class Language {
             return true
         }
 
-        let tags = retrievePOS(from: text)
+        let tags = getLexicalClass(text: text)
         var pivot = 0
 
         for (index, tag) in tags.enumerated() {
