@@ -41,6 +41,6 @@ class DataR {
 
 class DataQ {
     static var question = [
-        "My name is Seungjun": "Seungjun"
+        "My iweureiou oiru": "reowi ewriou"
     ]
 }

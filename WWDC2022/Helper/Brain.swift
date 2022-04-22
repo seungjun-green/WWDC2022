@@ -47,7 +47,6 @@ class Brain {
                             DataQ.question[curr_q] = answer
                             return "Ok, I'll remember that from now on2"
                         }
-                        break
                     }
                     
                     // if similar question does not exist, just add one more thing to rememeber
@@ -67,12 +66,13 @@ class Brain {
                 
                 // check if input say is in question list
                     let questions = DataQ.question.keys
+                print("MMMMMMMMMM",questions)
                     for curr_q in questions {
                         print(getSimilarity(str1: processedString, str2: curr_q), curr_q)
                         if getSimilarity(str1: processedString, str2: curr_q) >= 0.7 {
                             return DataQ.question[curr_q] ?? "I don't know"
                         }
-                        break
+                        
                     }
                     
                     /// human was just chlling out, no problem :)
@@ -169,7 +169,7 @@ class Language {
             }
         }
 
-        let question = curr_data.prefix(upTo: pivot+1).joined(separator: " ")
+        let question = curr_data[0...pivot].joined(separator: " ")
         let answer = curr_data.suffix(from:pivot+1).joined(separator: " ")
         
         return [question, answer]
