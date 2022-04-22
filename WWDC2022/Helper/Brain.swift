@@ -42,10 +42,10 @@ class Brain {
                     let questions = DataQ.question.keys
                     // if similar question already exist in the question list, then replace that one with a new answer
                     for curr_q in questions {
-                        print(">>>>>>", getSimilarity(str1: question, str2: curr_q))
+                        print(">>>>>>", getSimilarity(str1: question, str2: curr_q), question, curr_q)
                         if getSimilarity(str1: question, str2: curr_q) >= 0.85 {
-                            
                             DataQ.question[curr_q] = answer
+                            print("updated list: ", questions)
                             return "Ok, I'll remember that from now on2"
                         }
                     }
