@@ -86,10 +86,6 @@ class Brain {
                         print("Some error happend")
                         return "Unexpected error happend, Could you try again?"
                     }
-                    
-                   
-                 
-                
             }
         }
     }
@@ -158,8 +154,6 @@ class Language {
             return true
         }
 
-
-
         let tags = retrievePOS(from: text)
         var pivot = 0
 
@@ -170,7 +164,7 @@ class Language {
             }
         }
 
-        let question = curr_data[0...pivot].joined(separator: " ")
+        let question = curr_data[2...pivot].joined(separator: " ")
         let answer = curr_data.suffix(from:pivot+1).joined(separator: " ")
         
         return [question, answer]
