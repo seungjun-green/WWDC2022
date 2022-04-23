@@ -22,6 +22,7 @@ struct ContentView: View {
     @State private var transcribeFinished = false
     @State private var isRecording = false
     @State private var curr = 0
+    @State private var showSheet = false
     @FocusState var userTyping: Bool
     
     
@@ -55,6 +56,9 @@ struct ContentView: View {
                     }
                     
                 }.navigationTitle("Humanoid")
+                    .sheet(isPresented: $showSheet, content: {
+                        TutorialView()
+                    })
                     .toolbar {
                         ToolbarItemGroup(placement: .keyboard) {
                             
@@ -83,9 +87,21 @@ struct ContentView: View {
                             }
                             
                         }
+                        
+                        ToolbarItemGroup(placement: .navigationBarLeading) {
+                            Button {
+                                showSheet.toggle()
+                            } label: {
+                                Image(systemName: "questionmark.circle")
+                                
+                            }
+                            
+                        }
+
                     }
                 
             }.preferredColorScheme(.dark)
+            
         }
     }
 }
