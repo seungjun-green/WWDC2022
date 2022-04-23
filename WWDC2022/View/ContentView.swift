@@ -42,11 +42,7 @@ struct ContentView: View {
              
                 
                 ScrollView{
-                    
-                    Button("Testing") {
-                        getRecording()
-                    }
-                    
+                                
                     
                     RobotFacesView(emotion: emotion)
                         .frame(height: geo.size.width * faceSize)
