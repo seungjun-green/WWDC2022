@@ -20,12 +20,12 @@ struct FaceLineView: View {
     var body: some View {
         Circle().stroke(style: StrokeStyle(lineWidth: 3, lineCap: .square,  dash: [12], dashPhase:2))
             .foregroundColor(emotionColor)
-            .glow(color: emotionColor, radius: 12)
+            .glowEffect(color: emotionColor, radius: 12)
     }
 }
 
 extension View {
-    func glow(color: Color, radius: CGFloat) -> some View {
+    func glowEffect(color: Color, radius: CGFloat) -> some View {
         self
             .overlay(self.blur(radius: 4))
             .shadow(color: color, radius: 12)

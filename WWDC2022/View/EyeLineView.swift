@@ -75,7 +75,7 @@ struct NormallEye: View {
     var body: some View {
         Circle().stroke(style: StrokeStyle(lineWidth: 2, lineCap: .square,  dash: [4], dashPhase:2))
             .foregroundColor(Color.blue)
-            .glow(color: .blue, radius: 12)
+            .glowEffect(color: .blue, radius: 12)
     }
 }
 
@@ -102,11 +102,11 @@ struct Eye: View {
             } else if emotion == "joy" {
                 HappyEye().stroke(style: StrokeStyle(lineWidth: 2, lineCap: .square,  dash: [4], dashPhase:2))
                     .foregroundColor(Color.white)
-                    .glow(color: emotionColor, radius: 12)
+                    .glowEffect(color: emotionColor, radius: 12)
             } else {
                 Circle().stroke(style: StrokeStyle(lineWidth: 2, lineCap: .square,  dash: [4], dashPhase:2))
                     .foregroundColor(Color.white)
-                    .glow(color: emotionColor, radius: 12)
+                    .glowEffect(color: emotionColor, radius: 12)
             }
         }
     }
@@ -173,7 +173,7 @@ extension Shape {
         self
             .stroke(style: StrokeStyle(lineWidth: 2, lineCap: .square,  dash: [1], dashPhase: 2))
             .foregroundColor(Color.white)
-            .glow(color: .pink, radius: 12)
+            .glowEffect(color: .pink, radius: 12)
     }
 }
 
@@ -182,7 +182,6 @@ extension Shape {
         self
             .stroke(style: StrokeStyle(lineWidth: 2, lineCap: .square,  dash: [3], dashPhase: 2))
             .foregroundColor(Color.blue)
-           // .glow(color: .blue, radius: 2)
     }
 }
 

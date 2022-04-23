@@ -61,7 +61,7 @@ struct SurprisedMouth: View {
         Circle().stroke(style: StrokeStyle(lineWidth: 2, lineCap: .square,  dash: [4], dashPhase:2))
             .frame(width: geo.size.height * 0.4, height: geo.size.height * 0.4)
             .foregroundColor(Color.white)
-            .glow(color: .white, radius: 12)
+            .glowEffect(color: .white, radius: 12)
     }
     
 }
@@ -94,7 +94,7 @@ extension Shape {
         self
             .stroke(style: StrokeStyle(lineWidth: 2, lineCap: .square,  dash: [4], dashPhase: 2))
             .foregroundColor(color)
-            .glow(color: color, radius: 12)
+            .glowEffect(color: color, radius: 12)
     }
 }
 
