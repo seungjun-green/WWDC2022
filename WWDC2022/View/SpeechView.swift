@@ -116,6 +116,7 @@ struct SpeechView: View {
             let directoryContents = try! fileManager.contentsOfDirectory(at: documentDirectory, includingPropertiesForKeys: nil)
             for audio in directoryContents {
                 transcribeAudio(url: audio)
+               // break
             }
         }
     

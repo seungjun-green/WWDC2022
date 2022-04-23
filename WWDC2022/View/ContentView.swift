@@ -34,12 +34,18 @@ struct ContentView: View {
         }
     }
     
+    
+    
     var body: some View {
         GeometryReader { geo in
             NavigationView{
              
                 
                 ScrollView{
+                    
+                    Button("Testing") {
+                        getRecording()
+                    }
                     
                     
                     RobotFacesView(emotion: emotion)
