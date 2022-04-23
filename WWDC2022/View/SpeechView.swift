@@ -107,10 +107,10 @@ struct SpeechView: View {
     func stopRecording() {
             audioRecorder.stop()
             recording = false
-            fetchRecordings()
-        }
+            getRecording()
+    }
     
-    func fetchRecordings() {
+    func getRecording() {
             let fileManager = FileManager.default
             let documentDirectory = fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0]
             let directoryContents = try! fileManager.contentsOfDirectory(at: documentDirectory, includingPropertiesForKeys: nil)

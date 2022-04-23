@@ -46,13 +46,13 @@ class Brain {
                         if getSimilarity(str1: question, str2: curr_q) >= 0.85 {
                             DataQ.question[curr_q] = answer
                             print("updated list: ", questions)
-                            return "Ok, I'll remember that from now on2"
+                            return "Ok, I'll remember that from now on"
                         }
                     }
                     
                     // if similar question does not exist, just add one more thing to rememeber
                     DataQ.question[question] = answer
-                    return "Ok, I'll remember that from now on1"
+                    return "Ok, I'll remember that from now on"
                 }
             } else {
                 print("Whattttt????---")
@@ -60,14 +60,22 @@ class Brain {
                 
                 // check if input say is in question list
                     let questions = DataQ.question.keys
-                print("MMMMMMMMMM",questions)
+                
+                var ddr = ""
+                var highest_score = 0.0
                     for curr_q in questions {
-                        print(getSimilarity(str1: processedString, str2: curr_q), curr_q)
-                        if getSimilarity(str1: processedString, str2: curr_q) >= 0.7 {
-                            return DataQ.question[curr_q] ?? "I don't know"
+                        if getSimilarity(str1: processedString, str2: curr_q) >= 0.65 && getSimilarity(str1: processedString, str2: curr_q) > highest_score   {
+                            ddr = DataQ.question[curr_q] ?? "I don't know"
+                            highest_score = getSimilarity(str1: processedString, str2: curr_q)
                         }
                         
                     }
+                
+                if highest_score != 0.0 {
+                    highest_score = 0.0
+                    return ddr
+                }
+                ddr = ""
                     
                     /// human was just chlling out, no problem :)
                     do {
