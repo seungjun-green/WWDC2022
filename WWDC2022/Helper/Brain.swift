@@ -39,20 +39,24 @@ class Brain {
                                         
                     print("the question is \(question) and answer is \(answer)")
                     
-                    let questions = DataQ.question.keys
-                    // if similar question already exist in the question list, then replace that one with a new answer
-                    for curr_q in questions {
-                        print(">>>>>>", getSimilarity(str1: question, str2: curr_q), question, curr_q)
-                        if getSimilarity(str1: question, str2: curr_q) >= 0.85 {
-                            DataQ.question[curr_q] = answer
-                            print("updated list: ", questions)
-                            return "Ok, I'll remember that from now on"
+                    if question == "" && answer == "" {
+                        return "It seems you have't finished your sentence"
+                    } else {
+                        let questions = DataQ.question.keys
+                        // if similar question already exist in the question list, then replace that one with a new answer
+                        for curr_q in questions {
+                            print(">>>>>>3", getSimilarity(str1: question, str2: curr_q), question, curr_q)
+                            if getSimilarity(str1: question, str2: curr_q) >= 0.84 {
+                                DataQ.question[curr_q] = answer
+                                print("updated list3: ", questions)
+                                return "Ok, I'll remember that from now on"
+                            }
                         }
+                        
+                        // if similar question does not exist, just add one more thing to rememeber
+                        DataQ.question[question] = answer
+                        return "Ok, I'll remember that from now on"
                     }
-                    
-                    // if similar question does not exist, just add one more thing to rememeber
-                    DataQ.question[question] = answer
-                    return "Ok, I'll remember that from now on"
                 }
             } else {
                 print("Whattttt????---")
@@ -65,6 +69,7 @@ class Brain {
                 var highest_score = 0.0
                     for curr_q in questions {
                         if getSimilarity(str1: processedString, str2: curr_q) >= 0.65 && getSimilarity(str1: processedString, str2: curr_q) > highest_score   {
+                            print(">>>>>4: ", getSimilarity(str1: processedString, str2: curr_q))
                             ddr = DataQ.question[curr_q] ?? "I don't know"
                             highest_score = getSimilarity(str1: processedString, str2: curr_q)
                         }
@@ -162,8 +167,23 @@ class Language {
             }
         }
 
-        let question = curr_data[2...pivot].joined(separator: " ")
-        let answer = curr_data.suffix(from:pivot+1).joined(separator: " ")
+        print("LLLLLLLLLLL", pivot)
+        
+        var question = ""
+        var answer = ""
+        
+        if pivot != 0 {
+            question = curr_data[2...pivot].joined(separator: " ")
+            answer = curr_data.suffix(from:pivot+1).joined(separator: " ")
+            
+            if answer.isEmpty {
+                answer = "I don't have a answer to that question"
+            }
+        } else {
+            question = ""
+            answer = ""
+        }
+        print("curr data: \(curr_data) \n new question: \(question)\n new answer: \(answer)")
         
         return [question, answer]
     }
