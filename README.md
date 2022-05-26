@@ -12,7 +12,7 @@ Ask it some simple questions like 'How's the wather, What time is it and so on
 
 
 
-**2. Make it to remember something **
+**2. Making it to remember something**
 
 Start your sentence with 'Rember that'
 
